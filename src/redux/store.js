@@ -1,13 +1,16 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 
-export default store = createStore(
-  combineReducers(rootReducer),
+const store = createStore(
+  rootReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
+export default store;
+
+// Verificar onde colocar esse código
 if (window.Cypress) {
   window.store = store;
 }
