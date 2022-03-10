@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveUserInfo } from '../redux/actions/index';
+import saveUserInfo from '../redux/actions/index';
 
 class Form extends Component {
   state = {
