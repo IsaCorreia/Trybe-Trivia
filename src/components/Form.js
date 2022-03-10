@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { saveUserInfo } from '../redux/actions/index';
 
 class Form extends Component {
   state = {
@@ -23,7 +25,8 @@ class Form extends Component {
   };
 
   render() {
-    const { isButtonDisabled } = this.state;
+    const { isButtonDisabled, nome, email } = this.state;
+    const { saveUserInfo } = this.props;
     return (
       <form>
         <label htmlFor="nome">
@@ -50,6 +53,7 @@ class Form extends Component {
           type="button"
           data-testid="btn-play"
           disabled={ isButtonDisabled }
+          onClick={ () => saveUserInfo(nome, email) }
         >
           Play
         </button>
@@ -58,4 +62,10 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  saveUserInfo: (nome, email) => dispatch(saveUserInfo(nome, email)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
