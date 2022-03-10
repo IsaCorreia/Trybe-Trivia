@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveUserInfo } from '../redux/actions/index';
@@ -26,7 +27,7 @@ class Form extends Component {
 
   render() {
     const { isButtonDisabled, nome, email } = this.state;
-    const { saveUserInfo } = this.props;
+    const { dispatchUserInfo } = this.props;
     return (
       <form>
         <label htmlFor="nome">
@@ -53,7 +54,7 @@ class Form extends Component {
           type="button"
           data-testid="btn-play"
           disabled={ isButtonDisabled }
-          onClick={ () => saveUserInfo(nome, email) }
+          onClick={ () => dispatchUserInfo(nome, email) }
         >
           Play
         </button>
@@ -62,10 +63,14 @@ class Form extends Component {
   }
 }
 
+Form.propTypes = {
+  dispatchUserInfo: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  saveUserInfo: (nome, email) => dispatch(saveUserInfo(nome, email)),
+  dispatchUserInfo: (nome, email) => dispatch(saveUserInfo(nome, email)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
