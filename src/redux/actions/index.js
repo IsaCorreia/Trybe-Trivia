@@ -11,6 +11,14 @@ export const receiveTrivia = (trivia) => ({
   type: 'RECEIVE_TRIVIA',
   payload: trivia,
 });
+
+export const receiveTrivia = (trivia) => ({ type: 'RECEIVE_TRIVIA', payload: trivia });
+
+export const addImageURL = (payload) => ({
+  type: 'ADD_IMAGE_URL',
+  payload,
+});
+
 export const fetchTrivia = () => (dispatch) => {
   dispatch(requestTrivia());
   return fetch('https://opentdb.com/api_token.php?command=request')

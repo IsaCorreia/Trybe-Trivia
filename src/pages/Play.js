@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Answers from '../components/Answers';
 import { fetchQuestions } from '../redux/actions';
+import Header from '../components/Header';
+
 
 class Play extends Component {
   componentDidMount = () => {
@@ -19,6 +21,9 @@ class Play extends Component {
   render() {
     const { questions } = this.props;
     return (
+      <div>
+      <Header />
+      {
       questions.length
         ? (
           <>
@@ -35,6 +40,9 @@ class Play extends Component {
           </>
         )
         : <p>Carregando...</p>
+      }
+      </div>
+
     );
   }
 }
