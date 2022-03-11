@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
+import questions from './gameReducer';
 import player from './playerReducer';
 import token from './tokenReducer';
-import questions from './gameReducer'
 
 const rootReducer = combineReducers({
   player,

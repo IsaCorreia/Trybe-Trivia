@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Answers from '../components/Answers';
 import { connect } from 'react-redux';
+import Answers from '../components/Answers';
 import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
@@ -11,40 +12,46 @@ class Play extends Component {
   }
 
   handleClickNext = () => {
-    //remove obj da chave questions (criar action)
-    //verifica se a chave está vazia: se sim vai pra tela de feedback
+    // remove obj da chave questions (criar action)
+    // verifica se a chave está vazia: se sim vai pra tela de feedback
   }
 
   render() {
-    const { questions, questions: {correct_answer, incorrect_answers} } = this.props;
+    const { questions } = this.props;
     return (
-        questions.length
+      questions.length
         ? (
-            <>
-              <div data-testid="question-category">
+          <>
+            <div data-testid="question-category">
               { questions[0].category }
-              </div>
-              <div data-testid="question-text">
-                { questions[0].question }
-              </div>
-              <Answers
-                correct={ questions[0].correct_answer }
-                wrong={questions[0].incorrect_answers }
-              />
-            </>
-          )
-          : <p>Carregando...</p>
+            </div>
+            <div data-testid="question-text">
+              { questions[0].question }
+            </div>
+            <Answers
+              correct={ questions[0].correctAnswer }
+              wrong={ questions[0].incorrectAnswers }
+            />
+          </>
+        )
+        : <p>Carregando...</p>
     );
   }
 }
 
+Play.propTypes = {
+  getQuestions: PropTypes.func.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  token: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   questions: state.questions,
   token: state.token,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (token) => dispatch(fetchQuestions(token)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);
