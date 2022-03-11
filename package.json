@@ -31,7 +31,7 @@
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ""
   },
   "browserslist": {
     "production": [
@@ -52,6 +52,7 @@
     "cypress-multi-reporters": "^1.4.0",
     "eslint": "^5.0.0",
     "eslint-config-airbnb": "18.2.0",
+    "eslint-config-react": "^1.1.7",
     "eslint-config-trybe-frontend": "^1.2.3",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
