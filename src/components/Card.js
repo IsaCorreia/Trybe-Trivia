@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
 class Card extends Component {
   render() {
@@ -14,4 +15,13 @@ class Card extends Component {
   }
 }
 
-export default Card
+
+const mapStateToProps = (state) => ({
+  trivia: state.results,
+})
+
+const mapDispatchToProps = () => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

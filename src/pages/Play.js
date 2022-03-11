@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from '../components/Card';
+import { connect } from 'react-redux';
 
 class Play extends Component {
   render() {
@@ -9,4 +10,8 @@ class Play extends Component {
   }
 }
 
-export default Play;
+const mapDispatchToProps = () => ({
+
+})
+
+export default connect(null, mapDispatchToProps)(Play);
