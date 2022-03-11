@@ -4,21 +4,25 @@ import { connect } from 'react-redux';
 class Answers extends Component {
   render() {
     const { correct, wrong } = this.props;
-    const shuffledAnswers = [correct, ...wrong].sort((a, b) => 0.5 - Math.random()); //https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
-    console.log(shuffledAnswers);
+    const correctAnswer = {answer: correct, tag: "correct_answer"}
+    const incorrectAnswers = wrong.reduce((acc, cur) => {
+      acc.push({answer: cur, tag: "wrong-answer-"});
+      return acc;
+    }, [])
+    const allAnswers = [correctAnswer, ...incorrectAnswers]
+    const shuffledAnswers = allAnswers.sort((a, b) => 0.5 - Math.random());
     return (
-      // correct
-      // ? (
-      //   <section data-testid="answer-options">
-      //     {shuffledAnswers.map((answer, idx) => (
-      //       <button key={idx}>
-      //         {answer}
-      //       </button>
-      //     ))}
-      //   </section>
-      // )
-      // : null
-      <p>oi</p>
+      correct
+      ? (
+        <section data-testid="answer-options">
+          {shuffledAnswers.map(({answer, tag}, idx) => (
+            <button key={idx} data-testid={tag === "correct_answer" ? tag : `${tag}${idx}`}>
+              {answer}
+            </button>
+          ))}
+        </section>
+      )
+      : null
     )
   }
 }
