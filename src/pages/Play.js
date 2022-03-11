@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 
 class Play extends Component {
   render() {
     return (
-      <p>Play</p>
+      <div>
+        <Header />
+        <p>Play</p>
+      </div>
+
     );
   }
 }
