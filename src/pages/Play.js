@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import Card from '../components/Card';
 import { connect } from 'react-redux';
+import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
+  componentDidMount = () => {
+    const { getQuestions, token } = this.props;
+    getQuestions(token);
+  }
+
   render() {
     return (
       <Card />
@@ -10,8 +16,13 @@ class Play extends Component {
   }
 }
 
-const mapDispatchToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  trivia: state.results,
+  token: state.token,
 })
 
-export default connect(null, mapDispatchToProps)(Play);
+const mapDispatchToProps = (dispatch) => ({
+  getQuestions: (token) => dispatch(fetchQuestions(token)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Play);
