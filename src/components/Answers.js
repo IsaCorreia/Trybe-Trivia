@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-class Card extends Component {
+class Answers extends Component {
   render() {
     return (
       <>
@@ -24,4 +24,4 @@ const mapDispatchToProps = () => ({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Answers);
