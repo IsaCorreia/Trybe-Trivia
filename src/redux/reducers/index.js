@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import player from './playerReducer';
 import token from './tokenReducer';
-import trivia from './gameReducer'
+import questions from './gameReducer'
 
 const rootReducer = combineReducers({
   player,
   token,
-  trivia,
+  questions,
 });
 
 export default rootReducer;

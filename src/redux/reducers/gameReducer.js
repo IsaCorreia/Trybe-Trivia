@@ -1,10 +1,14 @@
-const trivia = (state = [], { type, payload }) => {
+const questions = (state = {}, { type, payload }) => {
   switch (type) {
   case 'RECEIVE_QUESTIONS':
-    if (payload.response_code === 0) return [...payload.results];
+    if (payload.response_code === 0) {
+      localStorage.setItem('token', payload.token);
+
+      return payload.results;
+    }
     break;
   default: return state;
   }
 };
 
-export default trivia;
+export default questions;
