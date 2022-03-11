@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 class Answers extends Component {
   render() {
     const { correct, incorrect } = this.props;
-    const answers = [correct, ...incorrect]
-    console.log(answers);
-    const shuffledArray = answers.sort((a, b) => 0.5 - Math.random());
-    console.log(shuffledArray);
+    const shuffledAnswers = [correct, ...incorrect].sort((a, b) => 0.5 - Math.random()); //https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
     return (
       correct
       ? (
