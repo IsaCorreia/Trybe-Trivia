@@ -8,12 +8,11 @@ class Answers extends Component {
     return (
       correct
       ? (
-        <>
-        <div>CardQuestions</div>
-        <div>CardAnswers</div>
-        <div>Timer</div>
-        <div>Next Button</div>
-      </>
+        shuffledAnswers.map((answer) => (
+          <button>
+            {answer}
+          </button>
+        ))
       )
       : null
     )
