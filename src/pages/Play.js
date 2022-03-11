@@ -6,8 +6,8 @@ import { fetchQuestions } from '../redux/actions';
 class Play extends Component {
   componentDidMount = () => {
     const { getQuestions, token, questions } = this.props;
-    // getQuestions(token);
-    getQuestions('59d386d6a84942f134f4ed9eb0910e14975ef117237b34dd690eef4e35636fe3') //mock for test
+    getQuestions(token);
+    // getQuestions('59d386d6a84942f134f4ed9eb0910e14975ef117237b34dd690eef4e35636fe3') //mock for test
   }
 
   handleClickNext = () => {
