@@ -25,11 +25,11 @@ class Form extends Component {
     this.setState({ [id]: value }, () => this.buttonEnabler());
   };
 
-  onClicked = () => {
+  onClicked = async () => {
     const { dispatchUserInfo, dispatchFetchTrivia } = this.props;
     const { nome, email } = this.state;
     dispatchUserInfo(nome, email);
-    dispatchFetchTrivia();
+    await dispatchFetchTrivia();
     this.setState({ isLoggedIn: true });
   }
 
