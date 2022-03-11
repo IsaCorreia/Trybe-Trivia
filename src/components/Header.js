@@ -19,11 +19,16 @@ class Header extends Component {
   };
 
   render() {
-    const { nameUser, urlImage } = this.props;
+    const { nameUser, urlImage, score } = this.props;
     return (
       <header>
-        <img src={ urlImage } alt={`${nameUser} picture`}/>
-        <p>{nameUser}</p>
+        <img
+          src={ urlImage }
+          alt={ nameUser }
+          data-testid="header-profile-picture"
+        />
+        <p data-testid="header-player-name">{nameUser}</p>
+        <p data-testid="header-score">{score}</p>
       </header>
     );
   }
@@ -33,6 +38,7 @@ const mapStateToProps = (state) => ({
   emailUser: state.player.gravatarEmail,
   nameUser: state.player.name,
   urlImage: state.userPictureURL,
+  score: state.player.score,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -41,9 +47,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 Header.propTypes = {
   emailUser: PropTypes.string.isRequired,
-  saveImageURL: PropTypes.string.isRequired,
-  urlImage: PropTypes.string.isRequired,
+  saveImageURL: PropTypes.func.isRequired,
+  urlImage: PropTypes.objectOf(PropTypes.string).isRequired,
   nameUser: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
