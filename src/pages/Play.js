@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
-  state = {
-    loading: true,
-  }
-
   componentDidMount = () => {
     const { getQuestions, token } = this.props;
     getQuestions(token);
