@@ -3,14 +3,9 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
+    const { correct, incorrect } = this.props;
     return (
-      <>
-        <div>Header</div>
-        <div>CardQuestions</div>
-        <div>CardAnswers</div>
-        <div>Timer</div>
-        <div>Next Button</div>
-      </>
+      
     )
   }
 }
