@@ -16,7 +16,7 @@ class Answers extends Component {
       ? (
         <section data-testid="answer-options">
           {shuffledAnswers.map(({answer, tag}) => (
-            <button key={answer} data-testid={tag === "correct_answer" ? tag : `${tag}`}>
+            <button key={answer} data-testid={ tag }>
               {answer}
             </button>
           ))}
