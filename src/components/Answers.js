@@ -32,8 +32,4 @@ const mapStateToProps = (state) => ({
   trivia: state.results,
 })
 
-const mapDispatchToProps = () => ({
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Answers);
+export default connect(mapStateToProps)(Answers);
