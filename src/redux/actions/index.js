@@ -14,3 +14,5 @@ export const fetchTrivia = () => (dispatch) => {
     .then((response) => response.json())
     .then((trivia) => dispatch(receiveTrivia(trivia)));
 };
+
+export const requestQuestions = () => ({type: 'REQUEST_QUESTIONS'});
