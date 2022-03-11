@@ -23,7 +23,7 @@ export const fetchQuestions = (token) => (dispatch) => {
   return fetch(`https://opentdb.com/api.php?amount=5&token=${token}`)
     .then((response) => response.json())
     .then((questions) => {
-      if (questions.response_code.includes(codeTokenInvalid)){
+      if (codeTokenInvalid.includes(questions.response_code)){
         fetch('https://opentdb.com/api_token.php?command=request')
         .then((response) => response.json())
         .then((trivia) => {
