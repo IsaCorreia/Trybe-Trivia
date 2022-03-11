@@ -29,7 +29,7 @@ class Play extends Component {
               </div>
               <Answers
                 correct={ questions[0].correct_answer }
-                wrong={questions[0].incorrect_answers } //https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
+                wrong={questions[0].incorrect_answers }
               />
             </>
           )

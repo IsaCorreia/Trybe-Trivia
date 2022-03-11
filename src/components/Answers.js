@@ -10,7 +10,7 @@ class Answers extends Component {
       return acc;
     }, [])
     const allAnswers = [correctAnswer, ...incorrectAnswers]
-    const shuffledAnswers = allAnswers.sort((a, b) => 0.5 - Math.random());
+    const shuffledAnswers = allAnswers.sort((a, b) => 0.5 - Math.random()); //https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
     return (
       correct
       ? (
