@@ -29,7 +29,7 @@ class Play extends Component {
               </div>
               <Answers
                 correct={ [questions[0].correct_answer]}
-                incorrect={questions[0].incorrect_answers }
+                wrong={questions[0].incorrect_answers }
               />
             </>
           )
