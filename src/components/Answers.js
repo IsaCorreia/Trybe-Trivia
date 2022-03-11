@@ -8,11 +8,13 @@ class Answers extends Component {
     return (
       correct
       ? (
-        shuffledAnswers.map((answer) => (
-          <button>
-            {answer}
-          </button>
-        ))
+        <section data-testid="answer-options">
+          shuffledAnswers.map((answer, ) => (
+            <button key={idx}>
+              {answer}
+            </button>
+          ))
+        </section>
       )
       : null
     )
