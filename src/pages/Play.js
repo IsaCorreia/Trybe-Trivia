@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Answers from '../components/Answers';
-import { fetchQuestions } from '../redux/actions';
 import Header from '../components/Header';
-
+import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
   componentDidMount = () => {
@@ -22,25 +21,25 @@ class Play extends Component {
     const { questions } = this.props;
     return (
       <div>
-      <Header />
-      {
-      questions.length
-        ? (
-          <>
-            <div data-testid="question-category">
-              { questions[0].category }
-            </div>
-            <div data-testid="question-text">
-              { questions[0].question }
-            </div>
-            <Answers
-              correct={ questions[0].correctAnswer }
-              wrong={ questions[0].incorrectAnswers }
-            />
-          </>
-        )
-        : <p>Carregando...</p>
-      }
+        <Header />
+        {
+          questions.length
+            ? (
+              <>
+                <div data-testid="question-category">
+                  { questions[0].category }
+                </div>
+                <div data-testid="question-text">
+                  { questions[0].question }
+                </div>
+                <Answers
+                  correct={ questions[0].correctAnswer }
+                  wrong={ questions[0].incorrectAnswers }
+                />
+              </>
+            )
+            : <p>Carregando...</p>
+        }
       </div>
 
     );

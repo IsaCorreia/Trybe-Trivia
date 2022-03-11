@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { correct, wrong } = this.props;
+    const { correct = '', wrong = [] } = this.props;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
