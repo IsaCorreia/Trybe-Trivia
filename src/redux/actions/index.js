@@ -16,3 +16,10 @@ export const fetchTrivia = () => (dispatch) => {
 };
 
 export const requestQuestions = () => ({type: 'REQUEST_QUESTIONS'});
+export const receiveQuestions = (questions) => ({type: 'RECEIVE_QUESTIONS', payload: questions});
+export const fetchQuestions = (token) => (dispatch) => {
+  dispatch(requestQuestions());
+  return fetch(`https://opentdb.com/api.php?amount=5&token=${token}`)
+    .then((response) => response.json())
+    .then((trivia) => dispatch(receiveTrivia(trivia)));
+};
