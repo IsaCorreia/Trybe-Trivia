@@ -1,21 +1,20 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 
 class Feedback extends Component {
-
   getMessagesFeedback = (() => {
-    const{ questionAssertions } = this.props;
-    if (questionAssertions < 3) {
+    const { questionAssertions } = this.props;
+    const MIN_ASSERTIONS = 2;
+    if (questionAssertions <= MIN_ASSERTIONS) {
       return 'Could be better...';
-    } else {
-      return 'Well Done!';
     }
+    return 'Well Done!';
   })
 
   render() {
-    const msgFeedback = this.getMessagesFeedback;
+    const msgFeedback = this.getMessagesFeedback();
     return (
       <div id="feedback-Screen">
         <Header />
