@@ -7,12 +7,11 @@ export const saveUserInfo = (nome, email) => ({
 });
 
 export const requestTrivia = () => ({ type: 'REQUEST_TRIVIA' });
+
 export const receiveTrivia = (trivia) => ({
   type: 'RECEIVE_TRIVIA',
   payload: trivia,
 });
-
-export const receiveTrivia = (trivia) => ({ type: 'RECEIVE_TRIVIA', payload: trivia });
 
 export const addImageURL = (payload) => ({
   type: 'ADD_IMAGE_URL',

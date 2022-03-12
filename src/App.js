@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Config from './pages/Config';
+import Feedback from './pages/Feedback';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Play from './pages/Play';
@@ -14,6 +15,7 @@ export default function App() {
       <Route path="/play" component={ Play } />
       <Route path="/rank" component={ Rank } />
       <Route path="/config" component={ Config } />
+      <Route path="/feedback" component={ Feedback } />
       <Route path="*" component={ NotFound } />
     </Switch>
   );
