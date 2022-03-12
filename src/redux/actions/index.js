@@ -49,3 +49,8 @@ export const fetchQuestions = (token) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const addAnswerSelected = (questions) => ({
+  type: 'ADD_ANSWER_SELECTED',
+  payload,
+});

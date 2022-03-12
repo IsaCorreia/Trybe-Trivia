@@ -1,8 +1,17 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addAnswerSelected } from '../redux/actions';
 
 class Answers extends Component {
+
+  selectAnswer = ({ target }) => {
+    const { saveAnswerSelected } = this.props;
+    const { id } = target;
+    const answerSelected = id;
+    saveAnswerSelected(answerSelected);
+  };
+
   render() {
     const { correct = '', wrong = [] } = this.props;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
@@ -18,7 +27,12 @@ class Answers extends Component {
         && (
           <section data-testid="answer-options">
             {shuffledAnswers.map(({ answer, tag }) => (
-              <button type="button" key={ answer } data-testid={ tag }>
+              <button
+                type="button"
+                key={ answer }
+                data-testid={ tag }
+                id={ tag }
+                onClick={ this.selectAnswer }>
                 {answer}
               </button>
             ))}
@@ -37,4 +51,8 @@ const mapStateToProps = (state) => ({
   trivia: state.results,
 });
 
-export default connect(mapStateToProps)(Answers);
+const mapDispatchToProps = (dispatch) => ({
+  saveAnswerSelected: (answerId) => dispatch(addAnswerSelected(answerId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Answers);
