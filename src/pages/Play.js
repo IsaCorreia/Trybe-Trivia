@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Answers from '../components/Answers';
-import { fetchQuestions } from '../redux/actions';
 import Header from '../components/Header';
+import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
   componentDidMount = () => {
@@ -19,6 +19,10 @@ class Play extends Component {
 
   render() {
     const { questions } = this.props;
+    const {
+      correct_answer: correctAnswer,
+      incorrect_answers: incorrectAnswers,
+    } = questions.length && questions[0];
     return (
       <div>
         <Header />
@@ -33,8 +37,8 @@ class Play extends Component {
                   { questions[0].question }
                 </div>
                 <Answers
-                  correct={ questions[0].correctAnswer }
-                  wrong={ questions[0].incorrectAnswers }
+                  correct={ correctAnswer }
+                  wrong={ incorrectAnswers }
                 />
               </>
             )

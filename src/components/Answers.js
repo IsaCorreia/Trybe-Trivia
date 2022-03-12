@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Answers extends Component {
   render() {
-    const { correct, wrong } = this.props;
+    const { correct = '', wrong = [] } = this.props;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
@@ -15,7 +15,7 @@ class Answers extends Component {
     const shuffledAnswers = allAnswers.sort(() => RANDOM_POS - Math.random()); // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
     return (
       correct
-        ? (
+        && (
           <section data-testid="answer-options">
             {shuffledAnswers.map(({ answer, tag }) => (
               <button type="button" key={ answer } data-testid={ tag }>
@@ -24,7 +24,6 @@ class Answers extends Component {
             ))}
           </section>
         )
-        : null
     );
   }
 }
