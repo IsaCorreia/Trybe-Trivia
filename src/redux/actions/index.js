@@ -50,7 +50,7 @@ export const fetchQuestions = (token) => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const addAnswerSelected = (questions) => ({
+export const addAnswerSelected = (payload) => ({
   type: 'ADD_ANSWER_SELECTED',
   payload,
 });

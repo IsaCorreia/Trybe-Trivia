@@ -4,17 +4,13 @@ import { connect } from 'react-redux';
 import Answers from '../components/Answers';
 import Header from '../components/Header';
 import { fetchQuestions } from '../redux/actions';
+import ButtonNext from '../components/ButtonNext';
 
 class Play extends Component {
   componentDidMount = () => {
     const { getQuestions, token } = this.props;
     getQuestions(token);
     // getQuestions('59d386d6a84942f134f4ed9eb0910e14975ef117237b34dd690eef4e35636fe3') //mock for test
-  }
-
-  handleClickNext = () => {
-    // remove obj da chave questions (criar action)
-    // verifica se a chave está vazia: se sim vai pra tela de feedback
   }
 
   render() {
@@ -40,7 +36,8 @@ class Play extends Component {
                   correct={ correctAnswer }
                   wrong={ incorrectAnswers }
                 />
-              </>
+                <ButtonNext />
+              </>              
             )
             : <p>Carregando...</p>
         }
