@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Answers from '../components/Answers';
 import Header from '../components/Header';
+import Timer from '../components/Timer';
 import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
@@ -24,28 +25,30 @@ class Play extends Component {
       incorrect_answers: incorrectAnswers,
     } = questions.length && questions[0];
     return (
-      <div>
-        <Header />
-        {
-          questions.length
-            ? (
-              <>
-                <div data-testid="question-category">
-                  { questions[0].category }
-                </div>
-                <div data-testid="question-text">
-                  { questions[0].question }
-                </div>
-                <Answers
-                  correct={ correctAnswer }
-                  wrong={ incorrectAnswers }
-                />
-              </>
-            )
-            : <p>Carregando...</p>
-        }
-      </div>
-
+      <>
+        <div>
+          <Header />
+          {
+            questions.length
+              ? (
+                <>
+                  <div data-testid="question-category">
+                    { questions[0].category }
+                  </div>
+                  <div data-testid="question-text">
+                    { questions[0].question }
+                  </div>
+                  <Answers
+                    correct={ correctAnswer }
+                    wrong={ incorrectAnswers }
+                  />
+                </>
+              )
+              : <p>Carregando...</p>
+          }
+        </div>
+        <Timer />
+      </>
     );
   }
 }
