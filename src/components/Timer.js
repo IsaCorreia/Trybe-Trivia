@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 class Timer extends Component {
   render() {
+    const { time } = this.props;
     return (
-      <h1>Timer</h1>
+      <h1>
+        {`Tempo: ${time}`}
+      </h1>
     );
   }
 }

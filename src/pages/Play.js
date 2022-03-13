@@ -7,6 +7,10 @@ import Timer from '../components/Timer';
 import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
+  state = {
+    sec: 30,
+  }
+
   componentDidMount = () => {
     const { getQuestions, token } = this.props;
     getQuestions(token);
@@ -18,8 +22,13 @@ class Play extends Component {
     // verifica se a chave está vazia: se sim vai pra tela de feedback
   }
 
+  handleTimer = () => {
+
+  }
+
   render() {
     const { questions } = this.props;
+    const { sec } = this.state;
     const {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
@@ -47,7 +56,7 @@ class Play extends Component {
               : <p>Carregando...</p>
           }
         </div>
-        <Timer />
+        <Timer time={ sec } />
       </>
     );
   }
