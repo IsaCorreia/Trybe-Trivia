@@ -8,13 +8,14 @@ import { fetchQuestions } from '../redux/actions';
 
 class Play extends Component {
   state = {
-    sec: 30,
+    time: 30,
   }
 
   componentDidMount = () => {
     const { getQuestions, token } = this.props;
     getQuestions(token);
     // getQuestions('59d386d6a84942f134f4ed9eb0910e14975ef117237b34dd690eef4e35636fe3') //mock for test
+    this.handleTimer();
   }
 
   handleClickNext = () => {
@@ -23,12 +24,17 @@ class Play extends Component {
   }
 
   handleTimer = () => {
-
+    const INTERVAL_IN_MILISEC = 1000;
+    const TOTAL_TIME = 30000;
+    const timer = setInterval(() => this.setState((prevState) => ({
+      time: prevState.time - 1,
+    })), INTERVAL_IN_MILISEC);
+    setTimeout(() => clearInterval(timer), TOTAL_TIME);
   }
 
   render() {
     const { questions } = this.props;
-    const { sec } = this.state;
+    const { time } = this.state;
     const {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
@@ -56,7 +62,7 @@ class Play extends Component {
               : <p>Carregando...</p>
           }
         </div>
-        <Timer time={ sec } />
+        <Timer time={ time } />
       </>
     );
   }
