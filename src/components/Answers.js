@@ -8,6 +8,13 @@ class Answers extends Component {
     classWrong: '',
   }
 
+  handleClick = () => {
+    this.setState({
+      classCorrect: 'correct-color',
+      classWrong: 'wrong-color',
+    });
+  }
+
   render() {
     const { correct = '', wrong = [] } = this.props;
     const { classCorrect, classWrong } = this.state;
@@ -28,7 +35,8 @@ class Answers extends Component {
                 type="button"
                 key={ answer }
                 data-testid={ tag }
-                className={ tag === correct - answer ? classCorrect : classWrong }
+                className={ tag === 'correct-answer' ? classCorrect : classWrong }
+                onClick={ this.handleClick }
               >
                 {answer}
               </button>
