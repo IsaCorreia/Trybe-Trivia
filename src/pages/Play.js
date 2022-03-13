@@ -9,6 +9,7 @@ import { fetchQuestions } from '../redux/actions';
 class Play extends Component {
   state = {
     time: 30,
+    disableButtons: false,
   }
 
   componentDidMount = () => {
@@ -29,12 +30,15 @@ class Play extends Component {
     const timer = setInterval(() => this.setState((prevState) => ({
       time: prevState.time - 1,
     })), INTERVAL_IN_MILISEC);
-    setTimeout(() => clearInterval(timer), TOTAL_TIME);
+    setTimeout(() => {
+      clearInterval(timer);
+      this.setState({ disableButtons: true });
+    }, TOTAL_TIME);
   }
 
   render() {
     const { questions } = this.props;
-    const { time } = this.state;
+    const { time, disableButtons } = this.state;
     const {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
@@ -56,13 +60,16 @@ class Play extends Component {
                   <Answers
                     correct={ correctAnswer }
                     wrong={ incorrectAnswers }
+                    disable={ disableButtons }
                   />
                 </>
               )
               : <p>Carregando...</p>
           }
         </div>
-        <Timer time={ time } />
+        <Timer
+          time={ time }
+        />
       </>
     );
   }

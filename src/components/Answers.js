@@ -16,11 +16,13 @@ class Answers extends Component {
   }
 
   handleClick = () => {
+    const LIMIT_INTERVAL = 99999;
     this.setColorButton();
+    for (let i = 1; i < LIMIT_INTERVAL; i += 1) { window.clearInterval(i); } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
   }
 
   render() {
-    const { correct = '', wrong = [] } = this.props;
+    const { correct = '', wrong = [], disable } = this.props;
     const { classCorrect, classWrong } = this.state;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong.reduce((acc, cur, idx) => {
@@ -41,6 +43,7 @@ class Answers extends Component {
                 data-testid={ tag }
                 className={ tag === 'correct-answer' ? classCorrect : classWrong }
                 onClick={ this.handleClick }
+                disabled={ disable }
               >
                 {answer}
               </button>
@@ -54,6 +57,8 @@ class Answers extends Component {
 Answers.propTypes = {
   correct: PropTypes.string.isRequired,
   wrong: PropTypes.string.isRequired,
+  disable: PropTypes.bool.isRequired,
+
 };
 
 const mapStateToProps = (state) => ({
