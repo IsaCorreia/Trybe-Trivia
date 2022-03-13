@@ -3,8 +3,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Answers extends Component {
+  state = {
+    classCorrect: '',
+    classWrong: '',
+  }
+
   render() {
     const { correct = '', wrong = [] } = this.props;
+    const { classCorrect, classWrong } = this.state;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
@@ -18,7 +24,12 @@ class Answers extends Component {
         && (
           <section data-testid="answer-options">
             {shuffledAnswers.map(({ answer, tag }) => (
-              <button type="button" key={ answer } data-testid={ tag }>
+              <button
+                type="button"
+                key={ answer }
+                data-testid={ tag }
+                className={ tag === correct - answer ? classCorrect : classWrong }
+              >
                 {answer}
               </button>
             ))}
