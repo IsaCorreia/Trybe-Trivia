@@ -67,9 +67,10 @@ class Play extends Component {
               : <p>Carregando...</p>
           }
         </div>
-        <Timer
+        {questions.length
+        && <Timer
           time={ time }
-        />
+        />}
       </>
     );
   }
