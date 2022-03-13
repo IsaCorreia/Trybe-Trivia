@@ -8,11 +8,15 @@ class Answers extends Component {
     classWrong: '',
   }
 
-  handleClick = () => {
+  setColorButton = () => {
     this.setState({
       classCorrect: 'correct-color',
       classWrong: 'wrong-color',
     });
+  }
+
+  handleClick = () => {
+    this.setColorButton();
   }
 
   render() {
