@@ -64,3 +64,8 @@ export const removeQuestion = (payload) => ({
   type: 'REMOVE_QUESTION',
   payload,
 });
+
+export const updateAssertion = (payload) => ({
+  type: 'UPDATE_ASSERTION',
+  payload,
+});

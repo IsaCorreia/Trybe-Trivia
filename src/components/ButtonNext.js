@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateScore, removeQuestion } from '../redux/actions';
+import { updateScore, removeQuestion, updateAssertion } from '../redux/actions';
 
 class ButtonNext extends Component {
   constructor() {
@@ -17,6 +17,7 @@ class ButtonNext extends Component {
     const POINTS_FOR_MEDIUM = 2;
     const POINTS_FOR_EASY = 1;
     const { score, updateScoreGame, questionList } = this.props;
+    this.handleAssertions();
     switch (questionList[0].difficulty) {
     case 'hard':
       dificulty = POINTS_FOR_HARD;
@@ -33,6 +34,12 @@ class ButtonNext extends Component {
     }
     const newScore = score + (BASE_SCORE + (timer * dificulty));
     updateScoreGame(newScore);
+  }
+
+  handleAssertions = () => {
+    const { assertionValue, ADDAssertions } = this.props;
+    const newAssertion = assertionValue + 1;
+    ADDAssertions(newAssertion);
   }
 
   handleClickNext() {
@@ -69,11 +76,13 @@ const mapStateToProps = (state) => ({
   answerSelected: state.answerSelected,
   questionList: state.questions,
   score: state.player.score,
+  assertionValue: state.player.assertions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateScoreGame: (score) => dispatch(updateScore(score)),
   removeQuestionAnswered: (question) => dispatch(removeQuestion(question)),
+  ADDAssertions: (assertionNum) => dispatch(updateAssertion(assertionNum)),
 });
 
 ButtonNext.propTypes = {
@@ -84,7 +93,9 @@ ButtonNext.propTypes = {
   removeQuestionAnswered: PropTypes.func.isRequired,
   questionList: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateScoreGame: PropTypes.func.isRequired,
-  answerSelected: PropTypes.string.isRequired,
+  answerSelected: PropTypes.objectOf(PropTypes.string).isRequired,
+  assertionValue: PropTypes.number.isRequired,
+  ADDAssertions: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);

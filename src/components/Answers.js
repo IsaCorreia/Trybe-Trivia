@@ -68,7 +68,7 @@ Answers.propTypes = {
   correct: PropTypes.string.isRequired,
   wrong: PropTypes.string.isRequired,
   disable: PropTypes.bool.isRequired,
-  saveAnswerSelected: PropTypes.string.isRequired,
+  saveAnswerSelected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
