@@ -31,7 +31,7 @@ class Answers extends Component {
                 type="button"
                 key={ answer }
                 data-testid={ tag }
-                id={ tag }
+                id={ answer }
                 onClick={ this.selectAnswer }>
                 {answer}
               </button>

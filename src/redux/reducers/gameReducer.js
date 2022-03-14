@@ -5,6 +5,9 @@ const questions = (state = [], { type, payload }) => {
       return payload.results;
     }
     break;
+  case 'REMOVE_QUESTION':
+    console.log(state);
+    return state.filter((questionEl) => questionEl.question !== payload)
   default: return state;
   }
 };

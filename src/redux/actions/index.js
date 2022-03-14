@@ -54,3 +54,13 @@ export const addAnswerSelected = (payload) => ({
   type: 'ADD_ANSWER_SELECTED',
   payload,
 });
+
+export const updateScore = (payload) => ({
+  type: 'UPDATE_SCORE',
+  payload,
+});
+
+export const removeQuestion = (payload) => ({
+  type: 'REMOVE_QUESTION',
+  payload,
+});
