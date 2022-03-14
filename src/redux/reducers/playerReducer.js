@@ -13,7 +13,6 @@ const player = (state = INITIAL_STATE, { type, payload }) => {
       ...payload,
     };
     case 'UPDATE_SCORE':
-      console.log('update');
       return {
         ...state,
         score: payload,

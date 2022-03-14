@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateScore, removeQuestion } from '../redux/actions';
+import PropTypes from 'prop-types';
 
 class ButtonNext extends Component {
+  constructor(){
+    super();
+    this.handleClickNext = this.handleClickNext.bind(this);
+  }
   handleScore = () => {
     const BASE_SCORE = 10;
     const timer = 1;
@@ -26,15 +31,21 @@ class ButtonNext extends Component {
     updateScoreGame(newScore);
   }
 
-  handleClickNext = () => {
-    const { answerSelected, questionList, removeQuestionAnswered } = this.props;
+  handleClickNext() {
+    const {
+      answerSelected,
+      questionList,
+      removeQuestionAnswered,
+      history,
+    } = this.props;
+    console.log(history);
     if ((questionList[0].correct_answer) === answerSelected) {
       this.handleScore()
     }
     removeQuestionAnswered(questionList[0].question);
-
-      // remove obj da chave questions (criar action)
-    // verifica se a chave está vazia: se sim vai pra tela de feedback
+    if (questionList.length === 1) {
+      history.push('/feedback');
+    }
   }
 
   render() {
@@ -59,5 +70,11 @@ const mapDispatchToProps = (dispatch) => ({
   updateScoreGame: (score) => dispatch(updateScore(score)),
   removeQuestionAnswered: (question) => dispatch(removeQuestion(question)),
 });
+
+ButtonNext.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);
