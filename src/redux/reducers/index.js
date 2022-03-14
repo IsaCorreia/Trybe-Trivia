@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   player,
   token,
   questions,
-  answerSelected,  
+  answerSelected,
   userPictureURL,
 });
 

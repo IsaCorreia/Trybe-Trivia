@@ -1,33 +1,37 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateScore, removeQuestion } from '../redux/actions';
-import PropTypes from 'prop-types';
 
 class ButtonNext extends Component {
-  constructor(){
+  constructor() {
     super();
     this.handleClickNext = this.handleClickNext.bind(this);
   }
+
   handleScore = () => {
     const BASE_SCORE = 10;
     const timer = 1;
     let dificulty = 0;
+    const POINTS_FOR_HARD = 3;
+    const POINTS_FOR_MEDIUM = 2;
+    const POINTS_FOR_EASY = 1;
     const { score, updateScoreGame, questionList } = this.props;
-    switch (questionList[0].difficulty){
-      case 'hard':
-        dificulty = 3;
+    switch (questionList[0].difficulty) {
+    case 'hard':
+      dificulty = POINTS_FOR_HARD;
       break;
-      case 'medium':
-        dificulty = 2;
+    case 'medium':
+      dificulty = POINTS_FOR_MEDIUM;
       break;
-      case 'easy':
-        dificulty = 1;
+    case 'easy':
+      dificulty = POINTS_FOR_EASY;
       break;
-      default:
-        dificulty = 0;
+    default:
+      dificulty = 0;
       break;
     }
-    const newScore = score + ( BASE_SCORE + (timer * dificulty));
+    const newScore = score + (BASE_SCORE + (timer * dificulty));
     updateScoreGame(newScore);
   }
 
@@ -38,9 +42,9 @@ class ButtonNext extends Component {
       removeQuestionAnswered,
       history,
     } = this.props;
-    console.log(history);
+    console.log(this.props);
     if ((questionList[0].correct_answer) === answerSelected) {
-      this.handleScore()
+      this.handleScore();
     }
     removeQuestionAnswered(questionList[0].question);
     if (questionList.length === 1) {
@@ -53,8 +57,9 @@ class ButtonNext extends Component {
       <button
         type="button"
         data-testid="btn-next"
-        onClick={ () => this.handleClickNext() }>
-          Próxima
+        onClick={ () => this.handleClickNext() }
+      >
+        Próxima
       </button>
     );
   }
@@ -75,6 +80,11 @@ ButtonNext.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  score: PropTypes.number.isRequired,
+  removeQuestionAnswered: PropTypes.func.isRequired,
+  questionList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateScoreGame: PropTypes.func.isRequired,
+  answerSelected: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);

@@ -12,11 +12,11 @@ const player = (state = INITIAL_STATE, { type, payload }) => {
       ...state,
       ...payload,
     };
-    case 'UPDATE_SCORE':
-      return {
-        ...state,
-        score: payload,
-      };
+  case 'UPDATE_SCORE':
+    return {
+      ...state,
+      score: payload,
+    };
   default: return state;
   }
 };

@@ -4,16 +4,35 @@ import { connect } from 'react-redux';
 import { addAnswerSelected } from '../redux/actions';
 
 class Answers extends Component {
+  state = {
+    classCorrect: '',
+    classWrong: '',
+  }
 
-  selectAnswer = ({ target }) => {
+  selectAnswer = (target) => {
     const { saveAnswerSelected } = this.props;
     const { id } = target;
     const answerSelected = id;
     saveAnswerSelected(answerSelected);
   };
 
+  setColorButton = () => {
+    this.setState({
+      classCorrect: 'correct-color',
+      classWrong: 'wrong-color',
+    });
+  }
+
+  handleClick = ({ target }) => {
+    const LIMIT_INTERVAL = 99999;
+    this.setColorButton();
+    for (let i = 1; i < LIMIT_INTERVAL; i += 1) { window.clearInterval(i); } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
+    this.selectAnswer(target);
+  }
+
   render() {
-    const { correct = '', wrong = [] } = this.props;
+    const { correct = '', wrong = [], disable } = this.props;
+    const { classCorrect, classWrong } = this.state;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
@@ -32,7 +51,10 @@ class Answers extends Component {
                 key={ answer }
                 data-testid={ tag }
                 id={ answer }
-                onClick={ this.selectAnswer }>
+                className={ tag === 'correct-answer' ? classCorrect : classWrong }
+                onClick={ this.handleClick }
+                disabled={ disable }
+              >
                 {answer}
               </button>
             ))}
@@ -45,6 +67,8 @@ class Answers extends Component {
 Answers.propTypes = {
   correct: PropTypes.string.isRequired,
   wrong: PropTypes.string.isRequired,
+  disable: PropTypes.bool.isRequired,
+  saveAnswerSelected: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
