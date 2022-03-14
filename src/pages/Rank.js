@@ -23,6 +23,7 @@ class Rank extends Component {
     const { rank } = this.state;
     return (
       <>
+        <h1 data-testid="ranking-title">Ranking</h1>
         {rank.map((item, index) => (
           <PlayerRank info={ item } index={ index } key={ index } />
         ))}
