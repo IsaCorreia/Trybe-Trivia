@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { fetchTrivia, saveUserInfo } from '../redux/actions/index';
+import './Form.css';
 
 class Form extends Component {
   state = {
@@ -36,37 +37,39 @@ class Form extends Component {
   render() {
     const { isButtonDisabled, isLoggedIn } = this.state;
     return (
-      <form>
-        {isLoggedIn && <Redirect to="/play" />}
-        <label htmlFor="nome">
-          Nome
-          <input
-            type="text"
-            data-testid="input-player-name"
-            id="nome"
-            onChange={ this.handleChange }
-          />
-        </label>
+      <section className="form-container">
+        <form>
+          {isLoggedIn && <Redirect to="/play" />}
+          <label htmlFor="nome">
+            Nome
+            <input
+              type="text"
+              data-testid="input-player-name"
+              id="nome"
+              onChange={ this.handleChange }
+            />
+          </label>
 
-        <label htmlFor="email">
-          E-mail
-          <input
-            type="email"
-            data-testid="input-gravatar-email"
-            id="email"
-            onChange={ this.handleChange }
-          />
-        </label>
+          <label htmlFor="email">
+            E-mail
+            <input
+              type="email"
+              data-testid="input-gravatar-email"
+              id="email"
+              onChange={ this.handleChange }
+            />
+          </label>
 
-        <button
-          type="button"
-          data-testid="btn-play"
-          disabled={ isButtonDisabled }
-          onClick={ this.onClicked }
-        >
-          Play
-        </button>
-      </form>
+          <button
+            type="button"
+            data-testid="btn-play"
+            disabled={ isButtonDisabled }
+            onClick={ this.onClicked }
+          >
+            Play
+          </button>
+        </form>
+      </section>
     );
   }
 }
