@@ -27,7 +27,9 @@ class Answers extends Component {
   handleClick = ({ target }) => {
     const LIMIT_INTERVAL = 99999;
     this.setColorButton();
-    for (let i = 1; i < LIMIT_INTERVAL; i += 1) { window.clearInterval(i); } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
+    for (let i = 1; i < LIMIT_INTERVAL; i += 1) {
+      window.clearInterval(i);
+    } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
     this.selectAnswer(target);
   }
 
