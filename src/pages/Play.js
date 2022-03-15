@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import { fetchQuestions } from '../redux/actions';
 import ButtonNext from '../components/ButtonNext';
+import './Play.css';
 
 class Play extends Component {
   state = {
@@ -47,8 +48,8 @@ class Play extends Component {
 
     return (
       <>
-        <div>
-          <Header />
+        <Header />
+        <section className="card">
           {
             questions.length
               ? (
@@ -68,8 +69,8 @@ class Play extends Component {
               )
               : <p>Carregando...</p>
           }
-        </div>
-        <ButtonNext history={ history } />
+          <ButtonNext history={ history } />
+        </section>
         {questions.length
         && <Timer
           time={ time }

@@ -1,0 +1,5 @@
+.card {
+  background-color: white;
+  display: flex;
+  width: 50%;
+}
