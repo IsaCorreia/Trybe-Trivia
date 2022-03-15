@@ -9,3 +9,8 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+button {
+  background-color: #f2f0fe;
+  width: 100px;
+}
