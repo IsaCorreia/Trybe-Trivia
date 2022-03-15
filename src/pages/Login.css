@@ -1,6 +1,5 @@
 img {
   filter: drop-shadow(5px 5px 5px #222);
-  margin-top: 20%;
   width: 20vw;
 }
 
@@ -8,4 +7,18 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+}
+
+.logo-container .config {
+  width: 35px;
+}
+
+.logo-container button {
+  padding: 0;
 }

@@ -9,12 +9,18 @@ class Login extends Component {
   render() {
     return (
       <main>
-        <section>
+        <section className="logo-container">
           <img src={ logoTrivia } alt="Logo Trivia" />
+          <Link to="/Config">
+            <button type="button" data-testid="btn-settings">
+              <img
+                className="config"
+                src="https://img.icons8.com/plasticine/35/000000/gear.png"
+                alt="Configurações do jogo"
+              />
+            </button>
+          </Link>
         </section>
-        <Link to="/Config">
-          <button type="button" data-testid="btn-settings">Config</button>
-        </Link>
         <Form />
       </main>
     );
