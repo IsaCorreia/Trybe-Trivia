@@ -43,7 +43,7 @@ class ButtonNext extends Component {
       break;
     }
     const newScore = score + (BASE_SCORE + (timerValue * dificulty));
-    updateScoreGame(newScore);    
+    updateScoreGame(newScore);
   }
 
   handleAssertions = () => {
@@ -63,9 +63,9 @@ class ButtonNext extends Component {
     } = this.props;
     const ranking = {
       name: playerName,
-      score: score,
+      score,
       picture: userPicture,
-    }
+    };
     localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
@@ -84,7 +84,7 @@ class ButtonNext extends Component {
     isNextVisible(true);
     if (questionList.length === 1) {
       history.push('/feedback');
-    }    
+    }
   }
 
   render() {
@@ -133,6 +133,9 @@ ButtonNext.propTypes = {
   ADDAssertions: PropTypes.func.isRequired,
   isNextVisible: PropTypes.func.isRequired,
   buttonStatus: PropTypes.bool.isRequired,
+  timerValue: PropTypes.number.isRequired,
+  userPicture: PropTypes.string.isRequired,
+  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);
