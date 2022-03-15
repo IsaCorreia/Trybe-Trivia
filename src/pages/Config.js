@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Config extends Component {
   render() {
     return (
-      <p data-testid="settings-title">Config</p>
+      <>
+        <p data-testid="settings-title">Config</p>
+        <Link to="/">
+          <button type="button" data-testid="btn-play-again">Voltar</button>
+        </Link>
+      </>
     );
   }
 }
