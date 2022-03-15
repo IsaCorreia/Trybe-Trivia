@@ -15,7 +15,7 @@ class Login extends Component {
             <button type="button" data-testid="btn-settings">
               <img
                 className="config"
-                src="https://img.icons8.com/plasticine/35/000000/gear.png"
+                src="https://img.icons8.com/ios/500/000000/services--v1.png"
                 alt="Configurações do jogo"
               />
             </button>
