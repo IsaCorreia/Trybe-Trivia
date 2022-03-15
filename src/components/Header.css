@@ -1,0 +1,15 @@
+header {
+  align-items: center;
+  background-color: aliceblue;
+  border: 1px solid black;
+  border-radius: 45px;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+header img {
+  border-radius: 90px;
+  margin: 20px;
+  width: 50px;
+}
