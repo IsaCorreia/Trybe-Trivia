@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PlayerRank from '../components/PlayerRank';
 
 const mockStorageRank = [
@@ -26,7 +27,10 @@ class Rank extends Component {
         <h1 data-testid="ranking-title">Ranking</h1>
         {rank.map((item, index) => (
           <PlayerRank info={ item } index={ index } key={ index } />
-        ))}
+        )) }
+        <Link to="/">
+          <button type="button" data-testid="btn-play-again">Jogar novamente</button>
+        </Link>
       </>
     );
   }
