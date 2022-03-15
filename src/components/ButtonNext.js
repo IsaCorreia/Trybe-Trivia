@@ -15,8 +15,9 @@ class ButtonNext extends Component {
   }
 
   handleScore = () => {
+    const { timerValue } = this.props;
+    console.log(timerValue);
     const BASE_SCORE = 10;
-    const timer = 1;
     let dificulty = 0;
     const POINTS_FOR_HARD = 3;
     const POINTS_FOR_MEDIUM = 2;
@@ -37,7 +38,7 @@ class ButtonNext extends Component {
       dificulty = 0;
       break;
     }
-    const newScore = score + (BASE_SCORE + (timer * dificulty));
+    const newScore = score + (BASE_SCORE + (timerValue * dificulty));
     updateScoreGame(newScore);
   }
 
@@ -70,7 +71,6 @@ class ButtonNext extends Component {
 
   render() {
     const { buttonStatus } = this.props;
-    console.log(buttonStatus);
     return (
       <button
         type="button"
@@ -90,6 +90,7 @@ const mapStateToProps = (state) => ({
   score: state.player.score,
   assertionValue: state.player.assertions,
   buttonStatus: state.isNextVisible,
+  timerValue: state.timerInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
