@@ -59,15 +59,16 @@ class Form extends Component {
               onChange={ this.handleChange }
             />
           </label>
-
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={ isButtonDisabled }
-            onClick={ this.onClicked }
-          >
-            Play
-          </button>
+          <center>
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={ isButtonDisabled }
+              onClick={ this.onClicked }
+            >
+              Play
+            </button>
+          </center>
         </form>
       </section>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../components/Form';
 import logoTrivia from '../trivia.png';
+
 import './Login.css';
 
 class Login extends Component {
@@ -12,7 +13,7 @@ class Login extends Component {
           <img src={ logoTrivia } alt="Logo Trivia" />
         </section>
         <Link to="/Config">
-          <button type="button" data-testid="btn-settings">Configs</button>
+          <button type="button" data-testid="btn-settings">Config</button>
         </Link>
         <Form />
       </main>

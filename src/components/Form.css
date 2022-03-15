@@ -3,7 +3,13 @@
   border-radius: 10px;
   box-shadow: 20px 20px 100px;
   display: flex;
+  flex-direction: column;
   padding: 15px;
   position: absolute;
   top: 60%;
+}
+
+label {
+  display: block;
+  margin: 15px;
 }
