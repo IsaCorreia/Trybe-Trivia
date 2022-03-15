@@ -69,3 +69,8 @@ export const updateAssertion = (payload) => ({
   type: 'UPDATE_ASSERTION',
   payload,
 });
+
+export const setButtonVisibility = (payload) => ({
+  type: 'SET_BUTTON_VISIBILITY',
+  payload,
+});
