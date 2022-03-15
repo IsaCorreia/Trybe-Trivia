@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addAnswerSelected } from '../redux/actions';
+import { addAnswerSelected, setButtonVisibility } from '../redux/actions';
 
 class Answers extends Component {
   state = {
@@ -10,10 +10,11 @@ class Answers extends Component {
   }
 
   selectAnswer = (target) => {
-    const { saveAnswerSelected } = this.props;
+    const { saveAnswerSelected, isNextVisible } = this.props;
     const { id } = target;
     const answerSelected = id;
     saveAnswerSelected(answerSelected);
+    isNextVisible(false);
   };
 
   setColorButton = () => {
@@ -69,6 +70,7 @@ Answers.propTypes = {
   wrong: PropTypes.string.isRequired,
   disable: PropTypes.bool.isRequired,
   saveAnswerSelected: PropTypes.func.isRequired,
+  isNextVisible: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -77,6 +79,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveAnswerSelected: (answerId) => dispatch(addAnswerSelected(answerId)),
+  isNextVisible: (status) => dispatch(setButtonVisibility(status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Answers);

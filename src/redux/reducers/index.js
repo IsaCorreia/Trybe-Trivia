@@ -4,6 +4,7 @@ import player from './playerReducer';
 import token from './tokenReducer';
 import userPictureURL from './userURLReducer';
 import answerSelected from './aswerSelected';
+import isNextVisible from './ButtonNextReducer';
 
 const rootReducer = combineReducers({
   player,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   questions,
   answerSelected,
   userPictureURL,
+  isNextVisible,
 });
 
 export default rootReducer;
