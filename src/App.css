@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: lightgray;
+  background: linear-gradient(90deg, rgb(121, 102, 250) 35%, rgb(201, 194, 253) 100%);
 }
 
 .wrong-color {
