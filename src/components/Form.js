@@ -44,7 +44,7 @@ class Form extends Component {
             <input
               type="text"
               data-testid="input-player-name"
-              placeholder="    Nome"
+              placeholder="Nome"
               id="nome"
               onChange={ this.handleChange }
             />
@@ -52,7 +52,7 @@ class Form extends Component {
 
           <label htmlFor="email">
             <input
-              placeholder="    E-mail"
+              placeholder="E-mail"
               type="email"
               data-testid="input-gravatar-email"
               id="email"
