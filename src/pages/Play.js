@@ -47,7 +47,7 @@ class Play extends Component {
     } = questions.length && questions[0];
 
     return (
-      <>
+      <section className="mainPlay">
         <Header />
         <section className="card">
           {
@@ -75,7 +75,7 @@ class Play extends Component {
         && <Timer
           time={ time }
         />}
-      </>
+      </section>
     );
   }
 }

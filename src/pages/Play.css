@@ -1,3 +1,7 @@
+.mainPlay {
+  display: flex;
+}
+
 .card {
   background-color: white;
   display: flex;
