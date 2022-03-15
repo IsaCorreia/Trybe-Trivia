@@ -7,7 +7,7 @@ class Config extends Component {
       <>
         <p data-testid="settings-title">Config</p>
         <Link to="/">
-          <button type="button" data-testid="btn-play-again">Voltar</button>
+          <button type="button">Voltar</button>
         </Link>
       </>
     );

@@ -29,7 +29,7 @@ class Rank extends Component {
           <PlayerRank info={ item } index={ index } key={ index } />
         )) }
         <Link to="/">
-          <button type="button" data-testid="btn-play-again">Jogar novamente</button>
+          <button type="button" data-testid="btn-go-home">Jogar novamente</button>
         </Link>
       </>
     );
