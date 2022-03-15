@@ -11,12 +11,10 @@ class Login extends Component {
         <section>
           <img src={ logoTrivia } alt="Logo Trivia" />
         </section>
-        <section id="form">
-          <Link to="/Config">
-            <button type="button" data-testid="btn-settings">Configs</button>
-          </Link>
-          <Form />
-        </section>
+        <Link to="/Config">
+          <button type="button" data-testid="btn-settings">Configs</button>
+        </Link>
+        <Form />
       </main>
     );
   }
