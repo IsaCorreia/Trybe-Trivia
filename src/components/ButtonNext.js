@@ -14,6 +14,10 @@ class ButtonNext extends Component {
     this.handleClickNext = this.handleClickNext.bind(this);
   }
 
+  componentWillUnmount() {
+    this.saveInfoLocalStore();
+  }
+
   handleScore = () => {
     const { timerValue } = this.props;
     console.log(timerValue);
@@ -39,7 +43,7 @@ class ButtonNext extends Component {
       break;
     }
     const newScore = score + (BASE_SCORE + (timerValue * dificulty));
-    updateScoreGame(newScore);
+    updateScoreGame(newScore);    
   }
 
   handleAssertions = () => {
@@ -49,6 +53,20 @@ class ButtonNext extends Component {
     } = this.props;
     const newAssertion = assertionValue + 1;
     ADDAssertions(newAssertion);
+  }
+
+  saveInfoLocalStore = () => {
+    const {
+      score,
+      userPicture,
+      playerName,
+    } = this.props;
+    const ranking = {
+      name: playerName,
+      score: score,
+      picture: userPicture,
+    }
+    localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
   handleClickNext() {
@@ -66,7 +84,7 @@ class ButtonNext extends Component {
     isNextVisible(true);
     if (questionList.length === 1) {
       history.push('/feedback');
-    }
+    }    
   }
 
   render() {
@@ -91,6 +109,8 @@ const mapStateToProps = (state) => ({
   assertionValue: state.player.assertions,
   buttonStatus: state.isNextVisible,
   timerValue: state.timerInfo,
+  userPicture: state.userPictureURL,
+  playerName: state.player.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
