@@ -41,18 +41,18 @@ class Form extends Component {
         <form>
           {isLoggedIn && <Redirect to="/play" />}
           <label htmlFor="nome">
-            Nome
             <input
               type="text"
               data-testid="input-player-name"
+              placeholder="    Nome"
               id="nome"
               onChange={ this.handleChange }
             />
           </label>
 
           <label htmlFor="email">
-            E-mail
             <input
+              placeholder="    E-mail"
               type="email"
               data-testid="input-gravatar-email"
               id="email"
