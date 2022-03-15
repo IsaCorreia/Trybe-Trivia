@@ -74,3 +74,8 @@ export const setButtonVisibility = (payload) => ({
   type: 'SET_BUTTON_VISIBILITY',
   payload,
 });
+
+export const saveTime = (payload) => ({
+  type: 'SAVE_TIME',
+  payload,
+});

@@ -5,6 +5,7 @@ import token from './tokenReducer';
 import userPictureURL from './userURLReducer';
 import answerSelected from './aswerSelected';
 import isNextVisible from './ButtonNextReducer';
+import timerInfo from './timerReducer';
 
 const rootReducer = combineReducers({
   player,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   answerSelected,
   userPictureURL,
   isNextVisible,
+  timerInfo,
 });
 
 export default rootReducer;

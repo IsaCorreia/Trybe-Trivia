@@ -14,9 +14,14 @@ class ButtonNext extends Component {
     this.handleClickNext = this.handleClickNext.bind(this);
   }
 
+  componentWillUnmount() {
+    this.saveInfoLocalStore();
+  }
+
   handleScore = () => {
+    const { timerValue } = this.props;
+    console.log(timerValue);
     const BASE_SCORE = 10;
-    const timer = 1;
     let dificulty = 0;
     const POINTS_FOR_HARD = 3;
     const POINTS_FOR_MEDIUM = 2;
@@ -37,7 +42,7 @@ class ButtonNext extends Component {
       dificulty = 0;
       break;
     }
-    const newScore = score + (BASE_SCORE + (timer * dificulty));
+    const newScore = score + (BASE_SCORE + (timerValue * dificulty));
     updateScoreGame(newScore);
   }
 
@@ -48,6 +53,20 @@ class ButtonNext extends Component {
     } = this.props;
     const newAssertion = assertionValue + 1;
     ADDAssertions(newAssertion);
+  }
+
+  saveInfoLocalStore = () => {
+    const {
+      score,
+      userPicture,
+      playerName,
+    } = this.props;
+    const ranking = {
+      name: playerName,
+      score,
+      picture: userPicture,
+    };
+    localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
   handleClickNext() {
@@ -70,7 +89,6 @@ class ButtonNext extends Component {
 
   render() {
     const { buttonStatus } = this.props;
-    console.log(buttonStatus);
     return (
       <button
         type="button"
@@ -90,6 +108,9 @@ const mapStateToProps = (state) => ({
   score: state.player.score,
   assertionValue: state.player.assertions,
   buttonStatus: state.isNextVisible,
+  timerValue: state.timerInfo,
+  userPicture: state.userPictureURL,
+  playerName: state.player.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -112,6 +133,9 @@ ButtonNext.propTypes = {
   ADDAssertions: PropTypes.func.isRequired,
   isNextVisible: PropTypes.func.isRequired,
   buttonStatus: PropTypes.bool.isRequired,
+  timerValue: PropTypes.number.isRequired,
+  userPicture: PropTypes.string.isRequired,
+  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);

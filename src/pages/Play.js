@@ -21,11 +21,6 @@ class Play extends Component {
     this.handleTimer();
   }
 
-  handleClickNext = () => {
-    // remove obj da chave questions (criar action)
-    // verifica se a chave está vazia: se sim vai pra tela de feedback
-  }
-
   handleTimer = () => {
     const INTERVAL_IN_MILISEC = 1000;
     const TOTAL_TIME = 30000;
