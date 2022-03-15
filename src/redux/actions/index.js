@@ -49,3 +49,23 @@ export const fetchQuestions = (token) => (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const addAnswerSelected = (payload) => ({
+  type: 'ADD_ANSWER_SELECTED',
+  payload,
+});
+
+export const updateScore = (payload) => ({
+  type: 'UPDATE_SCORE',
+  payload,
+});
+
+export const removeQuestion = (payload) => ({
+  type: 'REMOVE_QUESTION',
+  payload,
+});
+
+export const updateAssertion = (payload) => ({
+  type: 'UPDATE_ASSERTION',
+  payload,
+});

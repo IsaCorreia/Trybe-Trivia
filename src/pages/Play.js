@@ -5,6 +5,7 @@ import Answers from '../components/Answers';
 import Header from '../components/Header';
 import Timer from '../components/Timer';
 import { fetchQuestions } from '../redux/actions';
+import ButtonNext from '../components/ButtonNext';
 
 class Play extends Component {
   state = {
@@ -37,12 +38,13 @@ class Play extends Component {
   }
 
   render() {
-    const { questions } = this.props;
+    const { questions, history } = this.props;
     const { time, disableButtons } = this.state;
     const {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
     } = questions.length && questions[0];
+
     return (
       <>
         <div>
@@ -67,6 +69,7 @@ class Play extends Component {
               : <p>Carregando...</p>
           }
         </div>
+        <ButtonNext history={ history } />
         {questions.length
         && <Timer
           time={ time }
@@ -78,8 +81,9 @@ class Play extends Component {
 
 Play.propTypes = {
   getQuestions: PropTypes.func.isRequired,
-  questions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   token: PropTypes.string.isRequired,
+  history: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
