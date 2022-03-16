@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import './Feedback.css';
 
 class Feedback extends Component {
   getMessagesFeedback = (() => {
@@ -18,28 +19,30 @@ class Feedback extends Component {
     const { questionAssertions: assertions, score } = this.props;
     const msgFeedback = this.getMessagesFeedback();
     return (
-      <div id="feedback-Screen">
+      <>
         <Header />
-        <div>
-          <p>
-            Pontuação:
-            <span data-testid="feedback-total-score">{ score }</span>
-          </p>
-          <p>
-            Perguntas corretas:
-            <span data-testid="feedback-total-question">{ assertions }</span>
-          </p>
-          <h1 data-testid="feedback-text">{ msgFeedback }</h1>
+        <div className="container" id="feedback-Screen">
+          <div className="feedback">
+            <p>
+              Pontuação:
+              <span data-testid="feedback-total-score">{ score }</span>
+            </p>
+            <p>
+              Perguntas corretas:
+              <span data-testid="feedback-total-question">{ assertions }</span>
+            </p>
+            <h1 data-testid="feedback-text">{ msgFeedback }</h1>
 
-          <Link to="/">
-            <button type="button" data-testid="btn-play-again">Jogar novamente</button>
-          </Link>
+            <Link to="/">
+              <button type="button" data-testid="btn-play-again">Jogar novamente</button>
+            </Link>
 
-          <Link to="rank">
-            <button type="button" data-testid="btn-ranking">Ver ranking</button>
-          </Link>
+            <Link to="rank">
+              <button type="button" data-testid="btn-ranking">Ver ranking</button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

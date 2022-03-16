@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.feedback {
+  background-color: white;
+  border-radius: 25px;
+  padding: 30px 100px;
+}
