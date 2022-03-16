@@ -44,6 +44,10 @@ button:active {
   box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
 }
 
+button:disabled {
+  background: linear-gradient(0deg, rgb(110, 110, 110) 0%, lightgray 100%);
+}
+
 input {
   border: 1px solid #dbdbdb;
   border-radius: 30px;
