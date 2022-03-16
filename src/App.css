@@ -36,16 +36,17 @@ button svg {
   margin-right: 8px;
 }
 
-button:hover {
-  box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
-}
 
 button:active {
   box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
 }
 
 button:disabled {
-  background: linear-gradient(0deg, rgb(110, 110, 110) 0%, lightgray 100%);
+  background: rgba(132, 116, 254, 1);
+}
+
+button:hover:enabled {
+  box-shadow: 0 0.5em 1.5em -0.5em #917effbe;
 }
 
 input {
