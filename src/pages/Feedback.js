@@ -23,14 +23,17 @@ class Feedback extends Component {
         <Header />
         <div className="container" id="feedback-Screen">
           <div className="feedback">
-            <p>
-              Pontuação:
-              <span data-testid="feedback-total-score">{ score }</span>
-            </p>
-            <p>
-              Perguntas corretas:
+            <h3>
+              Pontuação
+            </h3>
+            <h3><span data-testid="feedback-total-score">{ score }</span></h3>
+            <br />
+            <h3>
+              Perguntas corretas
+            </h3>
+            <h3>
               <span data-testid="feedback-total-question">{ assertions }</span>
-            </p>
+            </h3>
             <br />
             <h1 data-testid="feedback-text">{ msgFeedback }</h1>
           </div>
