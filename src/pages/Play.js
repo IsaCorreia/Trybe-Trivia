@@ -42,35 +42,31 @@ class Play extends Component {
     } = questions.length && questions[0];
 
     return (
-      <section className="mainPlay">
-        <Header />
-        <section className="card">
-          {
-            questions.length
-              ? (
-                <>
-                  <div className="head-theme" data-testid="question-category">
-                    { questions[0].category }
-                  </div>
-                  <div className="question" data-testid="question-text">
-                    { questions[0].question }
-                  </div>
-                  <Answers
-                    correct={ correctAnswer }
-                    wrong={ incorrectAnswers }
-                    disable={ disableButtons }
-                  />
-                </>
-              )
-              : <p>Carregando...</p>
-          }
-          <ButtonNext history={ history } />
-        </section>
-        {questions.length
-        && <Timer
-          time={ time }
-        />}
-      </section>
+      questions.length
+        ? (
+          <section className="mainPlay">
+            <Header />
+            <section className="card">
+              <section className="head-theme" data-testid="question-category">
+                { questions[0].category }
+              </section>
+              <section className="question" data-testid="question-text">
+                { questions[0].question }
+              </section>
+              <Answers
+                correct={ correctAnswer }
+                wrong={ incorrectAnswers }
+                disable={ disableButtons }
+              />
+              <ButtonNext history={ history } />
+            </section>
+            {questions.length
+              && <Timer
+                time={ time }
+              />}
+          </section>
+        )
+        : <p>Carregando...</p>
     );
   }
 }
