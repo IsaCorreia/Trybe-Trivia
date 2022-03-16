@@ -16,6 +16,12 @@ body {
   border: 3px solid rgb(6, 240, 15);
 }
 
+/* Referência */
+/* https://stackoverflow.com/questions/23772673/hidden-property-does-not-work-with-flex-box */
+[hidden] {
+  display: none !important;
+}
+
 button {
   align-items: center;
   background: linear-gradient(0deg, rgba(77, 54, 208, 1) 0%, rgba(132, 116, 254, 1) 100%);

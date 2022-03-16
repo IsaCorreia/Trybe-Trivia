@@ -15,10 +15,6 @@ class ButtonNext extends Component {
     this.handleClickNext = this.handleClickNext.bind(this);
   }
 
-  componentWillUnmount() {
-    this.saveInfoLocalStore();
-  }
-
   handleScore = () => {
     const { timerValue } = this.props;
     const BASE_SCORE = 10;
@@ -53,20 +49,6 @@ class ButtonNext extends Component {
     } = this.props;
     const newAssertion = assertionValue + 1;
     ADDAssertions(newAssertion);
-  }
-
-  saveInfoLocalStore = () => {
-    const {
-      score,
-      userPicture,
-      playerName,
-    } = this.props;
-    const ranking = {
-      name: playerName,
-      score,
-      picture: userPicture,
-    };
-    localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
   handleClickNext() {

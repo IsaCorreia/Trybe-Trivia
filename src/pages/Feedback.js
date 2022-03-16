@@ -15,6 +15,25 @@ class Feedback extends Component {
     return 'Well Done!';
   })
 
+  componentDidMount() {
+    this.saveInfoLocalStore();
+  }
+
+  saveInfoLocalStore = () => {
+    const {
+      score,
+      userPicture,
+      playerName,
+    } = this.props;
+    const ranking = {
+      name: playerName,
+      score,
+      picture: userPicture,
+    };
+    console.log(ranking);
+    localStorage.setItem('ranking', JSON.stringify(ranking));
+  }
+
   render() {
     const { questionAssertions: assertions, score } = this.props;
     const msgFeedback = this.getMessagesFeedback();
@@ -66,11 +85,15 @@ class Feedback extends Component {
 const mapStateToProps = (state) => ({
   questionAssertions: state.player.assertions,
   score: state.player.score,
+  userPicture: state.userPictureURL,
+  playerName: state.player.name,
 });
 
 Feedback.propTypes = {
   questionAssertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  userPicture: PropTypes.string.isRequired,
+  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, null)(Feedback);
