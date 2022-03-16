@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addAnswerSelected, setButtonVisibility } from '../redux/actions';
+import './Answers.css';
 
 class Answers extends Component {
   state = {
@@ -47,7 +48,7 @@ class Answers extends Component {
     return (
       correct
         && (
-          <section data-testid="answer-options">
+          <section className="options-container" data-testid="answer-options">
             {shuffledAnswers.map(({ answer, tag }) => (
               <button
                 type="button"

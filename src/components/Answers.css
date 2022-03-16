@@ -1,0 +1,10 @@
+.options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+
+.correct-color, .wrong-color {
+  margin: 0 5px;
+}
