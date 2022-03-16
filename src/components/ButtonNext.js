@@ -15,10 +15,6 @@ class ButtonNext extends Component {
     this.handleClickNext = this.handleClickNext.bind(this);
   }
 
-  componentWillUnmount() {
-    this.saveInfoLocalStore();
-  }
-
   handleScore = () => {
     const { timerValue } = this.props;
     const BASE_SCORE = 10;
@@ -53,20 +49,6 @@ class ButtonNext extends Component {
     } = this.props;
     const newAssertion = assertionValue + 1;
     ADDAssertions(newAssertion);
-  }
-
-  saveInfoLocalStore = () => {
-    const {
-      score,
-      userPicture,
-      playerName,
-    } = this.props;
-    const ranking = {
-      name: playerName,
-      score,
-      picture: userPicture,
-    };
-    localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
   handleClickNext() {
@@ -110,8 +92,6 @@ const mapStateToProps = (state) => ({
   assertionValue: state.player.assertions,
   buttonStatus: state.isNextVisible,
   timerValue: state.timerInfo,
-  userPicture: state.userPictureURL,
-  playerName: state.player.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -119,6 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeQuestionAnswered: (question) => dispatch(removeQuestion(question)),
   ADDAssertions: (assertionNum) => dispatch(updateAssertion(assertionNum)),
   isNextVisible: (status) => dispatch(setButtonVisibility(status)),
+  resetCounter: (time) => dispatch((time)),
 });
 
 ButtonNext.propTypes = {
@@ -135,8 +116,6 @@ ButtonNext.propTypes = {
   isNextVisible: PropTypes.func.isRequired,
   buttonStatus: PropTypes.bool.isRequired,
   timerValue: PropTypes.number.isRequired,
-  userPicture: PropTypes.string.isRequired,
-  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);

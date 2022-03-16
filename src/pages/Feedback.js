@@ -6,6 +6,10 @@ import Header from '../components/Header';
 import './Feedback.css';
 
 class Feedback extends Component {
+  componentDidMount() {
+    this.saveInfoLocalStore();
+  }
+
   getMessagesFeedback = (() => {
     const { questionAssertions } = this.props;
     const MIN_ASSERTIONS = 2;
@@ -14,6 +18,21 @@ class Feedback extends Component {
     }
     return 'Well Done!';
   })
+
+  saveInfoLocalStore = () => {
+    const {
+      score,
+      userPicture,
+      playerName,
+    } = this.props;
+    const ranking = {
+      name: playerName,
+      score,
+      picture: userPicture,
+    };
+    console.log(ranking);
+    localStorage.setItem('ranking', JSON.stringify(ranking));
+  }
 
   render() {
     const { questionAssertions: assertions, score } = this.props;
@@ -66,11 +85,15 @@ class Feedback extends Component {
 const mapStateToProps = (state) => ({
   questionAssertions: state.player.assertions,
   score: state.player.score,
+  userPicture: state.userPictureURL,
+  playerName: state.player.name,
 });
 
 Feedback.propTypes = {
   questionAssertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  userPicture: PropTypes.string.isRequired,
+  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, null)(Feedback);
