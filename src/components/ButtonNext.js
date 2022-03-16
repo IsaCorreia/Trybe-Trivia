@@ -7,6 +7,7 @@ import {
   updateAssertion,
   setButtonVisibility,
 } from '../redux/actions';
+import './ButtonNext.css';
 
 class ButtonNext extends Component {
   constructor() {
@@ -92,6 +93,7 @@ class ButtonNext extends Component {
     return (
       <button
         type="button"
+        className="btnNext"
         hidden={ buttonStatus }
         data-testid="btn-next"
         onClick={ () => this.handleClickNext() }
