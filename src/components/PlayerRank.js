@@ -7,7 +7,7 @@ class PlayerRank extends Component {
     return (
       <section>
         <img src={ gravatarEmail } alt="" />
-        <p data-testid={ `player-name-${index}` }>{name}</p>
+        <strong><p data-testid={ `player-name-${index}` }>{name}</p></strong>
         <p data-testid={ `player-score-${index}` }>{score}</p>
       </section>
     );
