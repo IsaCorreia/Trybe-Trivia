@@ -55,7 +55,9 @@ class Answers extends Component {
                 key={ answer }
                 data-testid={ tag }
                 id={ answer }
-                className={ tag === 'correct-answer' ? classCorrect : classWrong }
+                className={
+                  `answer ${tag === 'correct-answer' ? classCorrect : classWrong}`
+                }
                 onClick={ this.handleClick }
                 disabled={ disable }
               >
