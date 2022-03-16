@@ -6,6 +6,10 @@ import Header from '../components/Header';
 import './Feedback.css';
 
 class Feedback extends Component {
+  componentDidMount() {
+    this.saveInfoLocalStore();
+  }
+
   getMessagesFeedback = (() => {
     const { questionAssertions } = this.props;
     const MIN_ASSERTIONS = 2;
@@ -14,10 +18,6 @@ class Feedback extends Component {
     }
     return 'Well Done!';
   })
-
-  componentDidMount() {
-    this.saveInfoLocalStore();
-  }
 
   saveInfoLocalStore = () => {
     const {

@@ -97,7 +97,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (token) => dispatch(fetchQuestions(token)),
-  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);

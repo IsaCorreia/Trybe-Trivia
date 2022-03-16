@@ -92,8 +92,6 @@ const mapStateToProps = (state) => ({
   assertionValue: state.player.assertions,
   buttonStatus: state.isNextVisible,
   timerValue: state.timerInfo,
-  userPicture: state.userPictureURL,
-  playerName: state.player.name,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -118,8 +116,6 @@ ButtonNext.propTypes = {
   isNextVisible: PropTypes.func.isRequired,
   buttonStatus: PropTypes.bool.isRequired,
   timerValue: PropTypes.number.isRequired,
-  userPicture: PropTypes.string.isRequired,
-  playerName: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonNext);
