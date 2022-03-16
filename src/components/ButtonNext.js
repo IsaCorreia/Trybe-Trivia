@@ -118,6 +118,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeQuestionAnswered: (question) => dispatch(removeQuestion(question)),
   ADDAssertions: (assertionNum) => dispatch(updateAssertion(assertionNum)),
   isNextVisible: (status) => dispatch(setButtonVisibility(status)),
+  resetCounter: (time) => dispatch((time)),
 });
 
 ButtonNext.propTypes = {

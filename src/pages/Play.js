@@ -21,6 +21,7 @@ class Play extends Component {
   }
 
   handleTimer = () => {
+    this.setState({ time: 30 });
     const INTERVAL_IN_MILISEC = 1000;
     const TOTAL_TIME = 30000;
     const timer = setInterval(() => this.setState((prevState) => ({
@@ -88,6 +89,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getQuestions: (token) => dispatch(fetchQuestions(token)),
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);
