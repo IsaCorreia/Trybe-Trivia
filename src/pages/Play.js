@@ -59,8 +59,8 @@ class Play extends Component {
                   wrong={ incorrectAnswers }
                   disable={ disableButtons }
                 />
-                <ButtonNext history={ history } />
               </section>
+              <ButtonNext history={ history } />
               {questions.length
               && <Timer
                 time={ time }
