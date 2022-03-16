@@ -49,7 +49,7 @@ class Play extends Component {
             questions.length
               ? (
                 <>
-                  <div data-testid="question-category">
+                  <div className="head-theme" data-testid="question-category">
                     { questions[0].category }
                   </div>
                   <div data-testid="question-text">

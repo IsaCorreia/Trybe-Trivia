@@ -1,9 +1,22 @@
 .mainPlay {
+  align-items: center;
   display: flex;
+  flex-direction: column;
 }
 
 .card {
   background-color: white;
+  border-radius: 25px;
   display: flex;
+  flex-direction: column;
   width: 50%;
+}
+
+.head-theme {
+  background-color: gray;
+  border-top-left-radius: 25px 25px;
+  border-top-right-radius: 25px 25px;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
 }
