@@ -23,19 +23,21 @@ class Feedback extends Component {
         <Header />
         <div className="container" id="feedback-Screen">
           <div className="feedback">
+            <h1 data-testid="feedback-text">{ msgFeedback }</h1>
+            <br />
             <h3>
               Pontuação
             </h3>
-            <h3><span data-testid="feedback-total-score">{ score }</span></h3>
+            <h1>
+              <span data-testid="feedback-total-score">{ score }</span>
+            </h1>
             <br />
             <h3>
               Perguntas corretas
             </h3>
-            <h3>
+            <h1>
               <span data-testid="feedback-total-question">{ assertions }</span>
-            </h3>
-            <br />
-            <h1 data-testid="feedback-text">{ msgFeedback }</h1>
+            </h1>
           </div>
           <div className="button-container">
             <Link to="/">
