@@ -1,0 +1,21 @@
+header {
+  align-items: center;
+  background-color: aliceblue;
+  border: 1px solid black;
+  border-radius: 45px;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  padding: 0 80px;
+}
+
+header img {
+  border-radius: 90px;
+  margin: 20px;
+  width: 50px;
+}
+
+.weight-text {
+  font-size: 18px;
+  font-weight: 600;
+}

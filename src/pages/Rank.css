@@ -1,0 +1,29 @@
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.rank-container {
+  align-items: center;
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+  filter: drop-shadow(5px 5px 5px #222);
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 30px 100px;
+  width: 25vw;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.rank-names {
+  text-align: center;
+}

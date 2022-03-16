@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PlayerRank from '../components/PlayerRank';
+import './Rank.css';
 
 const mockStorageRank = [
   {
@@ -22,12 +24,17 @@ class Rank extends Component {
   render() {
     const { rank } = this.state;
     return (
-      <>
-        <h1 data-testid="ranking-title">Ranking</h1>
-        {rank.map((item, index) => (
-          <PlayerRank info={ item } index={ index } key={ index } />
-        ))}
-      </>
+      <div className="main">
+        <section className="rank-container">
+          <h1 data-testid="ranking-title">Ranking</h1>
+          {rank.map((item, index) => (
+            <PlayerRank info={ item } index={ index } key={ index } />
+          )) }
+          <Link to="/">
+            <button type="button" data-testid="btn-go-home">Jogar novamente</button>
+          </Link>
+        </section>
+      </div>
     );
   }
 }

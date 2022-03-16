@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import { addImageURL } from '../redux/actions';
+import './Header.css';
 
 class Header extends Component {
   componentDidMount() {
@@ -27,8 +28,8 @@ class Header extends Component {
           alt={ nameUser }
           data-testid="header-profile-picture"
         />
-        <p data-testid="header-player-name">{nameUser}</p>
-        <p data-testid="header-score">{score}</p>
+        <p className="weight-text" data-testid="header-player-name">{nameUser}</p>
+        <p className="weight-text" data-testid="header-score">{score}</p>
       </header>
     );
   }

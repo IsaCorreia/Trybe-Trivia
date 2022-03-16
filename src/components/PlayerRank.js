@@ -4,11 +4,10 @@ import React, { Component } from 'react';
 class PlayerRank extends Component {
   render() {
     const { info: { name, gravatarEmail, score }, index } = this.props;
-    console.log(this.props);
     return (
-      <section>
+      <section className="rank-names">
         <img src={ gravatarEmail } alt="" />
-        <p data-testid={ `player-name-${index}` }>{name}</p>
+        <strong><p data-testid={ `player-name-${index}` }>{name}</p></strong>
         <p data-testid={ `player-score-${index}` }>{score}</p>
       </section>
     );
