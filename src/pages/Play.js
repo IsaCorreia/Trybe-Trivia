@@ -52,7 +52,7 @@ class Play extends Component {
                   <div className="head-theme" data-testid="question-category">
                     { questions[0].category }
                   </div>
-                  <div data-testid="question-text">
+                  <div className="question" data-testid="question-text">
                     { questions[0].question }
                   </div>
                   <Answers
