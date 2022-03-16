@@ -21,7 +21,6 @@ class ButtonNext extends Component {
 
   handleScore = () => {
     const { timerValue } = this.props;
-    console.log(timerValue);
     const BASE_SCORE = 10;
     let dificulty = 0;
     const POINTS_FOR_HARD = 3;

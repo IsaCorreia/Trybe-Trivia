@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 class PlayerRank extends Component {
   render() {
     const { info: { name, gravatarEmail, score }, index } = this.props;
-    console.log(this.props);
     return (
       <section>
         <img src={ gravatarEmail } alt="" />
