@@ -7,6 +7,7 @@ import {
   updateAssertion,
   setButtonVisibility,
 } from '../redux/actions';
+import './ButtonNext.css';
 
 class ButtonNext extends Component {
   constructor() {
@@ -20,7 +21,6 @@ class ButtonNext extends Component {
 
   handleScore = () => {
     const { timerValue } = this.props;
-    console.log(timerValue);
     const BASE_SCORE = 10;
     let dificulty = 0;
     const POINTS_FOR_HARD = 3;
@@ -92,6 +92,7 @@ class ButtonNext extends Component {
     return (
       <button
         type="button"
+        className="btnNext"
         hidden={ buttonStatus }
         data-testid="btn-next"
         onClick={ () => this.handleClickNext() }

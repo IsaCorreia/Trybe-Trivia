@@ -1,0 +1,19 @@
+.form-container {
+  align-items: center;
+  background-color: rgba(256, 256, 256, 0.1);
+  border-radius: 10px;
+  box-shadow: 20px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  padding: 15px;
+  position: absolute;
+  top: 40%;
+  width: 350px;
+}
+
+label {
+  display: block;
+  margin: 15px;
+}

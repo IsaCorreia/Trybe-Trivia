@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Timer from '../components/Timer';
 import { fetchQuestions } from '../redux/actions';
 import ButtonNext from '../components/ButtonNext';
+import './Play.css';
 
 class Play extends Component {
   state = {
@@ -41,35 +42,42 @@ class Play extends Component {
     } = questions.length && questions[0];
 
     return (
-      <>
-        <div>
-          <Header />
-          {
-            questions.length
-              ? (
-                <>
-                  <div data-testid="question-category">
-                    { questions[0].category }
-                  </div>
-                  <div data-testid="question-text">
-                    { questions[0].question }
-                  </div>
-                  <Answers
-                    correct={ correctAnswer }
-                    wrong={ incorrectAnswers }
-                    disable={ disableButtons }
-                  />
-                </>
-              )
-              : <p>Carregando...</p>
-          }
-        </div>
-        <ButtonNext history={ history } />
-        {questions.length
-        && <Timer
-          time={ time }
-        />}
-      </>
+      questions.length
+        ? (
+          <>
+            <Header />
+            <section className="mainPlay">
+              <section className="card">
+                <section className="head-theme" data-testid="question-category">
+                  { questions[0].category }
+                </section>
+                <section className="question" data-testid="question-text">
+                  { questions[0].question }
+                </section>
+                <Answers
+                  correct={ correctAnswer }
+                  wrong={ incorrectAnswers }
+                  disable={ disableButtons }
+                />
+              </section>
+              <ButtonNext history={ history } />
+              {questions.length
+              && <Timer
+                time={ time }
+              />}
+            </section>
+          </>
+        )
+        : (
+          <div className="load-container">
+            {/* https://cssfx.netlify.app/ */}
+            <div className="balls">
+              <div />
+              <div />
+              <div />
+            </div>
+          </div>
+        )
     );
   }
 }
