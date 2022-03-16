@@ -13,11 +13,13 @@
 }
 
 .head-theme {
-  background-color: gray;
+  background-color: #0977b2;
   border-top-left-radius: 25px 25px;
   border-top-right-radius: 25px 25px;
   font-size: 26px;
   font-weight: 700;
+  margin: 10px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
