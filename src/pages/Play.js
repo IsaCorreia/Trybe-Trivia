@@ -44,27 +44,29 @@ class Play extends Component {
     return (
       questions.length
         ? (
-          <section className="mainPlay">
+          <>
             <Header />
-            <section className="card">
-              <section className="head-theme" data-testid="question-category">
-                { questions[0].category }
+            <section className="mainPlay">
+              <section className="card">
+                <section className="head-theme" data-testid="question-category">
+                  { questions[0].category }
+                </section>
+                <section className="question" data-testid="question-text">
+                  { questions[0].question }
+                </section>
+                <Answers
+                  correct={ correctAnswer }
+                  wrong={ incorrectAnswers }
+                  disable={ disableButtons }
+                />
+                <ButtonNext history={ history } />
               </section>
-              <section className="question" data-testid="question-text">
-                { questions[0].question }
-              </section>
-              <Answers
-                correct={ correctAnswer }
-                wrong={ incorrectAnswers }
-                disable={ disableButtons }
-              />
-              <ButtonNext history={ history } />
-            </section>
-            {questions.length
+              {questions.length
               && <Timer
                 time={ time }
               />}
-          </section>
+            </section>
+          </>
         )
         : <p>Carregando...</p>
     );
