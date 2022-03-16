@@ -28,8 +28,8 @@ class Header extends Component {
           alt={ nameUser }
           data-testid="header-profile-picture"
         />
-        <p data-testid="header-player-name">{nameUser}</p>
-        <p data-testid="header-score">{score}</p>
+        <p className="weight-text" data-testid="header-player-name">{nameUser}</p>
+        <p className="weight-text" data-testid="header-score">{score}</p>
       </header>
     );
   }

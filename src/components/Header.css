@@ -14,3 +14,8 @@ header img {
   margin: 20px;
   width: 50px;
 }
+
+.weight-text {
+  font-size: 18px;
+  font-weight: 600;
+}
