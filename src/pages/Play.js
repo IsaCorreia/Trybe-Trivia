@@ -68,7 +68,16 @@ class Play extends Component {
             </section>
           </>
         )
-        : <p>Carregando...</p>
+        : (
+          <div className="load-container">
+            {/* https://cssfx.netlify.app/ */}
+            <div className="balls">
+              <div />
+              <div />
+              <div />
+            </div>
+          </div>
+        )
     );
   }
 }
