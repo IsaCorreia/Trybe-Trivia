@@ -34,8 +34,7 @@ class Answers extends Component {
     const POINTS_FOR_HARD = 3;
     const POINTS_FOR_MEDIUM = 2;
     const POINTS_FOR_EASY = 1;
-    
-    
+
     this.handleAssertions();
     switch (questionList[0].difficulty) {
     case 'hard':
@@ -79,7 +78,7 @@ class Answers extends Component {
     } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
     this.selectAnswer(target);
     setAnswerDisable();
-    if ((questionList[0].correct_answer) === answerSelected ) {
+    if ((questionList[0].correct_answer) === answerSelected) {
       this.handleScore();
     }
   }
@@ -143,7 +142,6 @@ Answers.propTypes = {
   setColorButton: PropTypes.func.isRequired,
   classCorrect: PropTypes.string.isRequired,
   classWrong: PropTypes.string.isRequired,
-  answerSelected: PropTypes.objectOf(PropTypes.string).isRequired,
   assertionValue: PropTypes.number.isRequired,
   questionList: PropTypes.arrayOf(PropTypes.object).isRequired,
   ADDAssertions: PropTypes.func.isRequired,

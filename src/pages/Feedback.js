@@ -34,7 +34,7 @@ class Feedback extends Component {
     const localStorageItems = localStorage.getItem('ranking');
     const results = JSON.parse(localStorageItems);
     if (results) {
-      ranking = results.concat(playerInfo);    
+      ranking = results.concat(playerInfo);
     } else {
       ranking = playerInfo;
     }
