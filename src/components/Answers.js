@@ -10,6 +10,10 @@ import {
 import './Answers.css';
 
 class Answers extends Component {
+  state = {
+    correctAnswerState: '',
+  }
+
   selectAnswer = (target) => {
     const { saveAnswerSelected, isNextVisible } = this.props;
     const { id } = target;
@@ -79,6 +83,12 @@ class Answers extends Component {
       classCorrect,
       classWrong,
     } = this.props;
+    const { correctAnswerState } = this.state;
+    if (correctAnswerState !== correct) {
+      this.setState({
+        correctAnswerState: correct,
+      });
+    }
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
@@ -86,7 +96,9 @@ class Answers extends Component {
     }, []);
     const allAnswers = [correctAnswer, ...incorrectAnswers];
     const RANDOM_POS = 0.5;
-    const shuffledAnswers = allAnswers.sort(() => RANDOM_POS - Math.random()); // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
+    const shuffledAnswers = correctAnswerState !== correct
+      ? allAnswers.sort(() => RANDOM_POS - Math.random()) // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
+      : allAnswers;
 
     return (
       shuffledAnswers
