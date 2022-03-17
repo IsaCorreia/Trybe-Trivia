@@ -23,13 +23,19 @@ class Answers extends Component {
   };
 
   handleScore = () => {
-    const { timerValue } = this.props;
+    const {
+      score,
+      updateScoreGame,
+      questionList,
+      timerValue,
+    } = this.props;
     const BASE_SCORE = 10;
     let dificulty = 0;
     const POINTS_FOR_HARD = 3;
     const POINTS_FOR_MEDIUM = 2;
     const POINTS_FOR_EASY = 1;
-    const { score, updateScoreGame, questionList } = this.props;
+    
+    
     this.handleAssertions();
     switch (questionList[0].difficulty) {
     case 'hard':
@@ -59,9 +65,10 @@ class Answers extends Component {
   }
 
   handleClick = ({ target }) => {
+    const { id } = target;
+    const answerSelected = id;
     const {
       setColorButton,
-      answerSelected,
       questionList,
       setAnswerDisable,
     } = this.props;
@@ -72,7 +79,7 @@ class Answers extends Component {
     } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
     this.selectAnswer(target);
     setAnswerDisable();
-    if ((questionList[0].correct_answer) === answerSelected) {
+    if ((questionList[0].correct_answer) === answerSelected ) {
       this.handleScore();
     }
   }
@@ -150,6 +157,8 @@ const mapStateToProps = (state) => ({
   trivia: state.results,
   questionList: state.questions,
   answerSelected: state.answerSelected,
+  score: state.player.score,
+  timerValue: state.timerInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

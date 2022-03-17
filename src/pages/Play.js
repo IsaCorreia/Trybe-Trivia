@@ -32,7 +32,6 @@ class Play extends Component {
 
   setAnswerDisable = () => {
     this.setState({ disableButtons: true });
-    console.log('oi');
   }
 
   handleTimer = () => {
