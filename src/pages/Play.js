@@ -61,7 +61,10 @@ class Play extends Component {
                   disable={ disableButtons }
                 />
               </section>
-              <ButtonNext history={ history } />
+              <ButtonNext
+                history={ history }
+                resetTimer={ this.handleTimer }
+              />
               {questions.length
               && <Timer
                 time={ time }

@@ -58,6 +58,7 @@ class ButtonNext extends Component {
       removeQuestionAnswered,
       history,
       isNextVisible,
+      resetTimer,
     } = this.props;
     if ((questionList[0].correct_answer) === answerSelected) {
       this.handleScore();
@@ -67,6 +68,7 @@ class ButtonNext extends Component {
     if (questionList.length === 1) {
       history.push('/feedback');
     }
+    resetTimer();
   }
 
   render() {
@@ -114,6 +116,7 @@ ButtonNext.propTypes = {
   assertionValue: PropTypes.number.isRequired,
   ADDAssertions: PropTypes.func.isRequired,
   isNextVisible: PropTypes.func.isRequired,
+  resetTimer: PropTypes.func.isRequired,
   buttonStatus: PropTypes.bool.isRequired,
   timerValue: PropTypes.number.isRequired,
 };
