@@ -14,45 +14,8 @@ class ButtonNext extends Component {
     this.handleClickNext = this.handleClickNext.bind(this);
   }
 
-  // handleScore = () => {
-  //   const { timerValue } = this.props;
-  //   const BASE_SCORE = 10;
-  //   let dificulty = 0;
-  //   const POINTS_FOR_HARD = 3;
-  //   const POINTS_FOR_MEDIUM = 2;
-  //   const POINTS_FOR_EASY = 1;
-  //   const { score, updateScoreGame, questionList } = this.props;
-  //   this.handleAssertions();
-  //   switch (questionList[0].difficulty) {
-  //   case 'hard':
-  //     dificulty = POINTS_FOR_HARD;
-  //     break;
-  //   case 'medium':
-  //     dificulty = POINTS_FOR_MEDIUM;
-  //     break;
-  //   case 'easy':
-  //     dificulty = POINTS_FOR_EASY;
-  //     break;
-  //   default:
-  //     dificulty = 0;
-  //     break;
-  //   }
-  //   const newScore = score + (BASE_SCORE + (timerValue * dificulty));
-  //   updateScoreGame(newScore);
-  // }
-
-  // handleAssertions = () => {
-  //   const {
-  //     assertionValue,
-  //     ADDAssertions,
-  //   } = this.props;
-  //   const newAssertion = assertionValue + 1;
-  //   ADDAssertions(newAssertion);
-  // }
-
   handleClickNext() {
     const {
-      // answerSelected,
       questionList,
       removeQuestionAnswered,
       history,
@@ -60,9 +23,6 @@ class ButtonNext extends Component {
       resetTimer,
       setColorButton,
     } = this.props;
-    // if ((questionList[0].correct_answer) === answerSelected) {
-    //   this.handleScore();
-    // }
     removeQuestionAnswered(questionList[0].question);
     isNextVisible(true);
     if (questionList.length === 1) {
@@ -100,7 +60,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateScoreGame: (score) => dispatch(updateScore(score)),
   removeQuestionAnswered: (question) => dispatch(removeQuestion(question)),
-  // ADDAssertions: (assertionNum) => dispatch(updateAssertion(assertionNum)),
   isNextVisible: (status) => dispatch(setButtonVisibility(status)),
   resetCounter: (time) => dispatch((time)),
 });
