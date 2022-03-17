@@ -19,7 +19,6 @@ class Play extends Component {
   componentDidMount = () => {
     const { getQuestions, token } = this.props;
     getQuestions(token);
-    // getQuestions('59d386d6a84942f134f4ed9eb0910e14975ef117237b34dd690eef4e35636fe3') //mock for test
     this.handleTimer();
   }
 
@@ -32,15 +31,14 @@ class Play extends Component {
 
   setAnswerDisable = () => {
     this.setState({ disableButtons: true });
-    console.log('oi');
   }
 
   handleTimer = () => {
     this.setState({ disableButtons: false });
     const { isNextVisible } = this.props;
-    this.setState({ time: 10 });
+    this.setState({ time: 30 });
     const INTERVAL_IN_MILISEC = 1000;
-    const TOTAL_TIME = 10000;
+    const TOTAL_TIME = 30000;
     const timer = setInterval(() => this.setState((prevState) => ({
       time: prevState.time - 1,
     })), INTERVAL_IN_MILISEC);
