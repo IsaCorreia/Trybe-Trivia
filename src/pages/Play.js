@@ -54,10 +54,7 @@ class Play extends Component {
   render() {
     const { questions, history } = this.props;
     const { time, disableButtons, classCorrect, classWrong } = this.state;
-    const {
-      correct_answer: correctAnswer,
-      incorrect_answers: incorrectAnswers,
-    } = questions.length && questions[0];
+    const { shuffledAnswers } = questions.length && questions[0];
 
     return (
       questions.length
@@ -73,8 +70,7 @@ class Play extends Component {
                   { questions[0].question }
                 </section>
                 <Answers
-                  correct={ correctAnswer }
-                  wrong={ incorrectAnswers }
+                  shuffledAnswers={ shuffledAnswers }
                   disable={ disableButtons }
                   classWrong={ classWrong }
                   classCorrect={ classCorrect }

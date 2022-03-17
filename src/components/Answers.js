@@ -80,15 +80,16 @@ class Answers extends Component {
       disable,
       classCorrect,
       classWrong,
+      shuffledAnswers,
     } = this.props;
-    const correctAnswer = { answer: correct, tag: 'correct-answer' };
-    const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
-      acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
-      return acc;
-    }, []);
-    const allAnswers = [correctAnswer, ...incorrectAnswers];
-    const RANDOM_POS = 0.5;
-    const shuffledAnswers = allAnswers.sort(() => RANDOM_POS - Math.random()); // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
+    // const correctAnswer = { answer: correct, tag: 'correct-answer' };
+    // const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
+    //   acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
+    //   return acc;
+    // }, []);
+    // const allAnswers = [correctAnswer, ...incorrectAnswers];
+    // const RANDOM_POS = 0.5;
+    // const shuffledAnswers = allAnswers.sort(() => RANDOM_POS - Math.random()); // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
 
     return (
       shuffledAnswers
@@ -125,6 +126,7 @@ Answers.propTypes = {
   classCorrect: PropTypes.string.isRequired,
   classWrong: PropTypes.string.isRequired,
   answerSelected: PropTypes.objectOf(PropTypes.string).isRequired,
+  shuffledAnswers: PropTypes.objectOf(PropTypes.any).isRequired,
   assertionValue: PropTypes.number.isRequired,
   questionList: PropTypes.arrayOf(PropTypes.object).isRequired,
   ADDAssertions: PropTypes.func.isRequired,
