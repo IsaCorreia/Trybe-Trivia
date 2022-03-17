@@ -30,6 +30,11 @@ class Play extends Component {
     });
   }
 
+  setAnswerDisable = () => {
+    this.setState({ disableButtons: true });
+    console.log('oi');
+  }
+
   handleTimer = () => {
     this.setState({ disableButtons: false });
     const { isNextVisible } = this.props;
@@ -74,6 +79,7 @@ class Play extends Component {
                   classWrong={ classWrong }
                   classCorrect={ classCorrect }
                   setColorButton={ this.setColorButton }
+                  setAnswerDisable={ this.setAnswerDisable }
                 />
               </section>
               <ButtonNext
