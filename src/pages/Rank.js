@@ -7,27 +7,23 @@ const mockStorageRank = [
   {
     name: 'fulano',
     score: 1,
-    gravatarEmail: 'fulano@email.com',
-  },
-  {
-    name: 'cliclano',
-    score: 2,
-    gravatarEmail: 'cliclano@email.com',
+    picture: 'fulano@email.com',
   },
 ];
 
 class Rank extends Component {
   state = {
-    rank: mockStorageRank,
+    ranking: mockStorageRank,
   };
 
   render() {
-    const { rank } = this.state;
+    const { ranking } = this.state;
+    console.log(ranking);
     return (
       <div className="main">
         <section className="rank-container">
           <h1 data-testid="ranking-title">Ranking</h1>
-          {rank.map((item, index) => (
+          {ranking.map((item, index) => (
             <PlayerRank info={ item } index={ index } key={ index } />
           )) }
           <Link to="/">

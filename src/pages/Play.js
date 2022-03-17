@@ -23,10 +23,10 @@ class Play extends Component {
     this.handleTimer();
   }
 
-  setColorButton = () => {
+  setColorButton = (correct = '', wrong = '') => {
     this.setState({
-      classCorrect: 'correct-color',
-      classWrong: 'wrong-color',
+      classCorrect: correct,
+      classWrong: wrong,
     });
   }
 
@@ -79,6 +79,7 @@ class Play extends Component {
               <ButtonNext
                 history={ history }
                 resetTimer={ this.handleTimer }
+                setColorButton={ this.setColorButton }
               />
               {questions.length
               && <Timer

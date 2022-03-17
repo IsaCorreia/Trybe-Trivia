@@ -59,16 +59,18 @@ class ButtonNext extends Component {
       history,
       isNextVisible,
       resetTimer,
+      setColorButton,
     } = this.props;
-    if ((questionList[0].correct_answer) === answerSelected) {
-      this.handleScore();
-    }
+    // if ((questionList[0].correct_answer) === answerSelected) {
+    //   this.handleScore();
+    // }
     removeQuestionAnswered(questionList[0].question);
     isNextVisible(true);
     if (questionList.length === 1) {
       history.push('/feedback');
     }
     resetTimer();
+    setColorButton();
   }
 
   render() {
@@ -112,6 +114,7 @@ ButtonNext.propTypes = {
   removeQuestionAnswered: PropTypes.func.isRequired,
   questionList: PropTypes.arrayOf(PropTypes.object).isRequired,
   updateScoreGame: PropTypes.func.isRequired,
+  setColorButton: PropTypes.func.isRequired,
   answerSelected: PropTypes.objectOf(PropTypes.string).isRequired,
   assertionValue: PropTypes.number.isRequired,
   ADDAssertions: PropTypes.func.isRequired,

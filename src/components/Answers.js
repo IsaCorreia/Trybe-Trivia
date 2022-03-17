@@ -26,13 +26,20 @@ class Answers extends Component {
   // }
 
   handleClick = ({ target }) => {
-    const { setColorButton } = this.props;
+    const {
+      setColorButton,
+      // answerSelected,
+      // questionList
+    } = this.props;
     const LIMIT_INTERVAL = 99999;
-    setColorButton();
+    setColorButton('correct-color', 'wrong-color');
     for (let i = 1; i < LIMIT_INTERVAL; i += 1) {
       window.clearInterval(i);
     } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
     this.selectAnswer(target);
+    // if ((questionList[0].correct_answer) === answerSelected) {
+    //   this.handleScore();
+    // }
   }
 
   render() {

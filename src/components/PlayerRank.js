@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 
 class PlayerRank extends Component {
   render() {
-    const { info: { name, gravatarEmail, score }, index } = this.props;
+    const { info: { name, picture, score }, index } = this.props;
     return (
       <section className="rank-names">
-        <img src={ gravatarEmail } alt="" />
+        <img src={ picture } alt="" />
         <strong><p data-testid={ `player-name-${index}` }>{name}</p></strong>
         <p data-testid={ `player-score-${index}` }>{score}</p>
       </section>
