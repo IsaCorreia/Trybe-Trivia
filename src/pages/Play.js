@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Answers from '../components/Answers';
 import Header from '../components/Header';
 import Timer from '../components/Timer';
-import { fetchQuestions } from '../redux/actions';
+import { fetchQuestions, setButtonVisibility } from '../redux/actions';
 import ButtonNext from '../components/ButtonNext';
 import './Play.css';
 
@@ -22,14 +22,17 @@ class Play extends Component {
   }
 
   handleTimer = () => {
-    this.setState({ time: 30 });
+    this.setState({ disableButtons: false });
+    const { isNextVisible } = this.props;
+    this.setState({ time: 2 });
     const INTERVAL_IN_MILISEC = 1000;
-    const TOTAL_TIME = 30000;
+    const TOTAL_TIME = 2000;
     const timer = setInterval(() => this.setState((prevState) => ({
       time: prevState.time - 1,
     })), INTERVAL_IN_MILISEC);
     setTimeout(() => {
       clearInterval(timer);
+      isNextVisible(false);
       this.setState({ disableButtons: true });
     }, TOTAL_TIME);
   }
@@ -88,6 +91,7 @@ class Play extends Component {
 
 Play.propTypes = {
   getQuestions: PropTypes.func.isRequired,
+  isNextVisible: PropTypes.func.isRequired,
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   token: PropTypes.string.isRequired,
   history: PropTypes.func.isRequired,
@@ -99,6 +103,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  isNextVisible: (status) => dispatch(setButtonVisibility(status)),
   getQuestions: (token) => dispatch(fetchQuestions(token)),
 });
 
