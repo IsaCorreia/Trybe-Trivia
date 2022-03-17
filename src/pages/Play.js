@@ -30,6 +30,11 @@ class Play extends Component {
     });
   }
 
+  setAnswerDisable = () => {
+    this.setState({ disableButtons: true });
+    console.log('oi');
+  }
+
   handleTimer = () => {
     this.setState({ disableButtons: false });
     const { isNextVisible } = this.props;
@@ -53,15 +58,6 @@ class Play extends Component {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
     } = questions.length && questions[0];
-    const correctObj = { answer: correctAnswer, tag: 'correct-answer' };
-    const incorrectObj = incorrectAnswers && incorrectAnswers.reduce((acc, cur, idx) => {
-      acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
-      return acc;
-    }, []);
-    console.log(incorrectObj);
-    const allAnswers = [correctObj, incorrectObj];
-    const RANDOM_POS = 0.5;
-    const shuffledAnswers = allAnswers.sort(() => RANDOM_POS - Math.random()); // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj#:~:text=The%20first%20and%20simplest%20way,)%20%3D%3E%200.5%20%2D%20Math.
 
     return (
       questions.length
@@ -80,10 +76,10 @@ class Play extends Component {
                   correct={ correctAnswer }
                   wrong={ incorrectAnswers }
                   disable={ disableButtons }
-                  // classWrong={ classWrong }
-                  // classCorrect={ classCorrect }
-                  shuffledAnswers={ shuffledAnswers }
+                  classWrong={ classWrong }
+                  classCorrect={ classCorrect }
                   setColorButton={ this.setColorButton }
+                  setAnswerDisable={ this.setAnswerDisable }
                 />
               </section>
               <ButtonNext
