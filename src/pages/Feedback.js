@@ -20,20 +20,25 @@ class Feedback extends Component {
   })
 
   saveInfoLocalStore = () => {
+    let ranking = [];
     const {
       score,
       userPicture,
       playerName,
     } = this.props;
-    const ranking = {
+    const playerInfo = [{
       name: playerName,
       score,
       picture: userPicture,
-    };
+    }];
     const localStorageItems = localStorage.getItem('ranking');
     const results = JSON.parse(localStorageItems);
-    results.push(ranking)
-    localStorage.setItem('ranking', JSON.stringify(results));
+    if (results) {
+      ranking = results.concat(playerInfo);    
+    } else {
+      ranking = playerInfo;
+    }
+    localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
   render() {
