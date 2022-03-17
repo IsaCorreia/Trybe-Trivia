@@ -12,6 +12,8 @@ class Play extends Component {
   state = {
     time: 30,
     disableButtons: false,
+    classCorrect: '',
+    classWrong: '',
   }
 
   componentDidMount = () => {
@@ -21,12 +23,19 @@ class Play extends Component {
     this.handleTimer();
   }
 
+  setColorButton = () => {
+    this.setState({
+      classCorrect: 'correct-color',
+      classWrong: 'wrong-color',
+    });
+  }
+
   handleTimer = () => {
     this.setState({ disableButtons: false });
     const { isNextVisible } = this.props;
-    this.setState({ time: 2 });
+    this.setState({ time: 10 });
     const INTERVAL_IN_MILISEC = 1000;
-    const TOTAL_TIME = 2000;
+    const TOTAL_TIME = 10000;
     const timer = setInterval(() => this.setState((prevState) => ({
       time: prevState.time - 1,
     })), INTERVAL_IN_MILISEC);
@@ -39,7 +48,7 @@ class Play extends Component {
 
   render() {
     const { questions, history } = this.props;
-    const { time, disableButtons } = this.state;
+    const { time, disableButtons, classCorrect, classWrong } = this.state;
     const {
       correct_answer: correctAnswer,
       incorrect_answers: incorrectAnswers,
@@ -62,6 +71,9 @@ class Play extends Component {
                   correct={ correctAnswer }
                   wrong={ incorrectAnswers }
                   disable={ disableButtons }
+                  classWrong={ classWrong }
+                  classCorrect={ classCorrect }
+                  setColorButton={ this.setColorButton }
                 />
               </section>
               <ButtonNext

@@ -6,8 +6,8 @@ import './Answers.css';
 
 class Answers extends Component {
   state = {
-    classCorrect: '',
-    classWrong: '',
+    // classCorrect: '',
+    // classWrong: '',
   }
 
   selectAnswer = (target) => {
@@ -18,16 +18,17 @@ class Answers extends Component {
     isNextVisible(false);
   };
 
-  setColorButton = () => {
-    this.setState({
-      classCorrect: 'correct-color',
-      classWrong: 'wrong-color',
-    });
-  }
+  // setColorButton = () => {
+  //   this.setState({
+  //     classCorrect: 'correct-color',
+  //     classWrong: 'wrong-color',
+  //   });
+  // }
 
   handleClick = ({ target }) => {
+    const { setColorButton } = this.props;
     const LIMIT_INTERVAL = 99999;
-    this.setColorButton();
+    setColorButton();
     for (let i = 1; i < LIMIT_INTERVAL; i += 1) {
       window.clearInterval(i);
     } // https://stackoverflow.com/questions/958433/how-can-i-clearinterval-for-all-setinterval
@@ -36,7 +37,7 @@ class Answers extends Component {
 
   render() {
     const { correct = '', wrong = [], disable } = this.props;
-    const { classCorrect, classWrong } = this.state;
+    const { classCorrect, classWrong } = this.props;
     const correctAnswer = { answer: correct, tag: 'correct-answer' };
     const incorrectAnswers = wrong && wrong.reduce((acc, cur, idx) => {
       acc.push({ answer: cur, tag: `wrong-answer-${idx}` });
@@ -76,6 +77,9 @@ Answers.propTypes = {
   disable: PropTypes.bool.isRequired,
   saveAnswerSelected: PropTypes.func.isRequired,
   isNextVisible: PropTypes.func.isRequired,
+  setColorButton: PropTypes.func.isRequired,
+  classCorrect: PropTypes.string.isRequired,
+  classWrong: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

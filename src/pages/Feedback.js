@@ -31,6 +31,9 @@ class Feedback extends Component {
       picture: userPicture,
     };
     console.log(ranking);
+    const localStorageItems = localStorage.getItem('cartItems');
+    const results = JSON.parse(localStorageItems);
+    console.log(results);
     localStorage.setItem('ranking', JSON.stringify(ranking));
   }
 
