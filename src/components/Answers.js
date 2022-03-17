@@ -159,6 +159,7 @@ const mapStateToProps = (state) => ({
   answerSelected: state.answerSelected,
   score: state.player.score,
   timerValue: state.timerInfo,
+  assertionValue: state.player.assertions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
