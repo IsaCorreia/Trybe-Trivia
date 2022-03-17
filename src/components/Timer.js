@@ -8,7 +8,7 @@ class Timer extends Component {
     const { saveTimerInfo, time } = this.props;
     saveTimerInfo(time);
     return (
-      <h1>
+      <h1 style={ { marginTop: '15px' } }>
         {`Tempo: ${time}`}
       </h1>
     );
