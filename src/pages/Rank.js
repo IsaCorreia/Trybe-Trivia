@@ -1,38 +1,67 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PlayerRank from '../components/PlayerRank';
 import './Rank.css';
-
-const mockStorageRank = [
-  {
-    name: 'fulano',
-    score: 1,
-    picture: 'fulano@email.com',
-  },
-];
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateScore, updateAssertion } from '../redux/actions';
 
 class Rank extends Component {
-  state = {
-    ranking: mockStorageRank,
-  };
-
-  render() {
-    const { ranking } = this.state;
-    console.log(ranking);
-    return (
-      <div className="main">
-        <section className="rank-container">
-          <h1 data-testid="ranking-title">Ranking</h1>
-          {ranking.map((item, index) => (
-            <PlayerRank info={ item } index={ index } key={ index } />
-          )) }
-          <Link to="/">
-            <button type="button" data-testid="btn-go-home">Jogar novamente</button>
-          </Link>
-        </section>
-      </div>
-    );
+  //referência
+  //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  componentWillUnmount(){
+    const { updateScoreGame, updateAssertionGame } =  this.props;
+    updateScoreGame(0);
+    updateAssertionGame(0);
   }
-}
+  
+  sortlist = (() => {
+    const localStorageItems = localStorage.getItem('ranking');
+    const rankList = JSON.parse(localStorageItems);
+    rankList.sort(function (a, b) {
+      if (a.score < b.score) {
+        return 1;
+      }
+      if (a.score > b.score) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+    return rankList;
+  });
 
-export default Rank;
+    render() {
+      const playerRanking = this.sortlist();
+      return (
+        <section className="rank-names">
+          {
+            playerRanking.map(({score, name, picture }, index) => (
+              <>
+                <p key={ index } />
+                <img src={ picture } alt="" />
+                <strong><p data-testid={ `player-name-${index}` }>{name}</p></strong>
+                <p data-testid={ `player-score-${index}` }>{score}</p>
+              </>
+          ))}
+          <Link to="/">
+              <button
+                type="button"
+                data-testid="btn-go-home"
+              >
+                Jogar Novamente
+              </button>
+            </Link>
+        </section>
+      );
+    }
+  }
+
+  const mapStateToProps = (state) => ({
+  actualPlayerName: state.player.name,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateScoreGame: (score) => dispatch(updateScore(score)),
+  updateAssertionGame: (assertion) => dispatch(updateAssertion(assertion)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rank);
