@@ -45,6 +45,7 @@ export const fetchQuestions = (token) => (dispatch) => {
             .then((triviaAPIResult) => dispatch(receiveQuestions(triviaAPIResult)))
             .catch((error) => console.log(error)));
       }
+      console.log(tokenAPIResult);
       return dispatch(receiveQuestions(tokenAPIResult));
     })
     .catch((error) => console.log(error));
