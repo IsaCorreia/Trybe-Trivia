@@ -37,6 +37,7 @@ class Rank extends Component {
     const playerRanking = this.sortlist();
     return (
       <section className="rank-names">
+        <h1 data-testid="ranking-title">Ranking</h1>
         {
           playerRanking.map(({ score, name, picture }, index) => (
             <>
